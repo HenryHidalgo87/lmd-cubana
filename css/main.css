@@ -1,0 +1,262 @@
+/* HTML-DOC */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+/* NAVEGACION */
+#inicio {
+  background-image: url(../img/bandera.jpg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner {
+  width: 100%;
+  height: 80px;
+}
+
+#cont-logo {
+  height: 80px;
+}
+
+#cont-logo >a > img {
+  height: 80px;
+}
+
+.logo-lmd {
+  width: 80px;
+  height: 80px;
+}
+
+.col-sm-8 {
+    color: white;
+  }
+
+/*  */
+/* header::before {
+  content: "";
+  display: block;
+  margin-bottom: 80px;
+} */
+
+nav {
+  position: fixed;  
+  top: 0;
+  z-index: 100;
+  /* margin-bottom: 80px; */
+}
+
+#h2seccion2 {
+  font-weight: 700;
+  font-size: 52px;
+  color: #000000!important;
+  line-height: 1.2em;
+}
+/* SEPARADOR FRASE */
+
+#separadorfrase {
+  background: #f1f1f1;
+  padding: 40px 0 30px 0;
+  text-align: center;
+}
+
+/* SERVICIOS */
+#servicios {
+  background-color: #FF0031;
+}
+
+
+/* TITULO DE SERVICIOS */
+.jumbotron {
+  background-color: #FF0031 !important;
+}
+#h4servicios {
+  color: #f1f1f1;
+}
+/*-------TARJETAS DE SERVICIOS---------*/
+.card{
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+padding: 14px 80px 18px 36px;
+cursor: pointer;
+}
+
+.card:hover{
+   transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.card h3{
+font-weight: 600;
+}
+
+.card img{
+position: absolute;
+top: 20px;
+right: 15px;
+max-height: 120px;
+}
+
+.card-1{
+background-image: url(../img/Message_sent.png);
+    background-repeat: no-repeat;
+  background-position: right;
+  background-size: 120px;
+}
+
+.card-2{
+ background-image: url(../img/File_bundle.png);
+    background-repeat: no-repeat;
+  background-position: right;
+  background-size: 120px;
+}
+
+.card-3{
+ background-image: url(../img/Mail.png);
+    background-repeat: no-repeat;
+  background-position: right;
+  background-size: 100px;
+}
+
+.card-4{
+background-image: url(../img/wedding.png);
+    background-repeat: no-repeat;
+  background-position: right;
+  background-size: 120px;
+}
+
+.card-5{
+ background-image: url(../img/family.png);
+    background-repeat: no-repeat;
+  background-position: right;
+  background-size: 100px;
+}
+
+.card-6{
+ background-image: url(../img/Departing.png);
+    background-repeat: no-repeat;
+  background-position: right;
+  background-size: 120px;
+}
+
+/* ACERCA DE */
+#card-acerca {
+    padding-top: 18px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+  @media(max-width: 990px){
+    .card{
+      margin: 20px;
+    }
+  } 
+
+/* FOOTER */
+.footer{
+  background: linear-gradient(to bottom left, #D2D0FF, #007bff);
+}
+
+.footer-link{
+  color:white;
+  text-decoration: none
+}
+
+.footer-link:hover {
+  color:white;
+  text-decoration: underline;
+}
+
+/* BLOG */
+/*----  Main Style  ----*/
+#cards_landscape_wrap-2{
+  text-align: center;
+  background: #F7F7F7;
+}
+#cards_landscape_wrap-2 .container{
+  padding-top: 80px; 
+  padding-bottom: 100px;
+}
+#cards_landscape_wrap-2 a{
+  text-decoration: none;
+  outline: none;
+}
+#cards_landscape_wrap-2 .card-flyer {
+  border-radius: 5px;
+}
+#cards_landscape_wrap-2 .card-flyer .image-box{
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
+  border-radius: 5px;
+}
+#cards_landscape_wrap-2 .card-flyer .image-box img{
+  -webkit-transition:all .9s ease; 
+  -moz-transition:all .9s ease; 
+  -o-transition:all .9s ease;
+  -ms-transition:all .9s ease; 
+  width: 100%;
+  height: 200px;
+}
+#cards_landscape_wrap-2 .card-flyer:hover .image-box img{
+  opacity: 0.7;
+  -webkit-transform:scale(1.15);
+  -moz-transform:scale(1.15);
+  -ms-transform:scale(1.15);
+  -o-transform:scale(1.15);
+  transform:scale(1.15);
+}
+#cards_landscape_wrap-2 .card-flyer .text-box{
+  text-align: center;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box .text-container{
+  padding: 30px 18px;
+}
+#cards_landscape_wrap-2 .card-flyer{
+  background: #FFFFFF;
+  margin-top: 50px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
+}
+#cards_landscape_wrap-2 .card-flyer:hover{
+  background: #fff;
+  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-top: 50px;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box p{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px; 
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box h6{
+  margin-top: 0px;
+  margin-bottom: 4px; 
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Black', sans-serif;
+  letter-spacing: 1px;
+  color: #00acc1;
+}
+/*  */
