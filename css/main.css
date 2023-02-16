@@ -263,4 +263,7 @@ background-image: url(../img/wedding.png);
   letter-spacing: 1px;
   color: #00acc1;
 }
-/*  */
+/* CONTACT */
+#contact-card{
+  min-width: 260px;
+}
