@@ -13,6 +13,12 @@ sr.reveal('#cont-logo', {
     distance: '-100px',
   });
 
+sr.reveal('#h2banner', {
+    duration: 3000,
+    origin: 'right',
+    distance: '-100px',
+  });
+
   sr.reveal('.header', { 
     easing: 'ease-in',
     duration: 2000, 
