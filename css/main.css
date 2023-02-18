@@ -146,21 +146,21 @@ max-height: 120px;
 background-image: url(../img/Message_sent.png);
     background-repeat: no-repeat;
   background-position: right;
-  background-size: 120px;
+  background-size: 100px;
 }
 
 .card-2{
  background-image: url(../img/File_bundle.png);
     background-repeat: no-repeat;
   background-position: right;
-  background-size: 120px;
+  background-size: 100px;
 }
 
 .card-3{
  background-image: url(../img/Mail.png);
     background-repeat: no-repeat;
   background-position: right;
-  background-size: 100px;
+  background-size: 90px;
 }
 
 .card-4{
