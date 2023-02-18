@@ -97,7 +97,7 @@ cursor: pointer;
 }
 
 .card{
-  max-width: 90%;
+  max-width: 90%;!important
 }
 
 .card:hover{
