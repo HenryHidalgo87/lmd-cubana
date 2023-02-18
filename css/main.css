@@ -65,6 +65,15 @@ nav {
   color: #000000!important;
   line-height: 1.2em;
 }
+
+#card-supesto1-1{
+  max-width: 90%!important
+}
+
+#card-supesto1-2{
+  max-width: 90%;!important
+}
+
 /* SEPARADOR FRASE */
 
 #separadorfrase {
@@ -99,6 +108,7 @@ cursor: pointer;
 .card{
   max-width: 90%;!important
 }
+
 
 .card:hover{
    transform: scale(1.05);
