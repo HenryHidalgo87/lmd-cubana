@@ -161,6 +161,7 @@ background-image: url(../img/wedding.png);
     padding-right: 15px;
     width: 100%;
     min-width: 278px;
+    max-width: 90%;
 }
 
   @media(max-width: 990px){
