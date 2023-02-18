@@ -7,7 +7,7 @@ sr.reveal('.navbar', {
     distance: '-100px',
   });
 
-sr.reveal('.banner', {
+sr.reveal('#banner', {
     duration: 3000,
     origin: 'right',
     distance: '-100px',
