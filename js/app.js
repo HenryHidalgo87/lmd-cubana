@@ -7,13 +7,7 @@ sr.reveal('.navbar', {
     distance: '-100px',
   });
 
-sr.reveal('#cont-logo', {
-    duration: 3000,
-    origin: 'right',
-    distance: '-100px',
-  });
-
-sr.reveal('#h2banner', {
+sr.reveal('.banner', {
     duration: 3000,
     origin: 'right',
     distance: '-100px',

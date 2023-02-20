@@ -135,12 +135,14 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 font-weight: 600;
 }
 
-.card img{
+/* .card img{
 position: absolute;
 top: 20px;
 right: 15px;
-max-height: 120px;
-}
+left: 15px;
+max-height: 90%;
+max-width: 90%;
+} */
 
 .card-1{
 background-image: url(../img/Message_sent.png);
