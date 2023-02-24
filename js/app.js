@@ -19,16 +19,16 @@ sr.reveal('.banner', {
     delay: 1500
   });
 
+  sr.reveal('.header-btn', {
+    duration: 2000,
+    delay: 1500, 
+    origin: 'bottom'
+  });
+
 sr.reveal('.anexos-accordion', {
     duration: 2000,
     origin: 'right',
     distance: '300px'
-  });
-
-sr.reveal('.header-btn', {
-    duration: 2000,
-    delay: 2000, 
-    origin: 'bottom'
   });
 
 /*--SEPARADOR FRASE--*/ 
@@ -48,11 +48,11 @@ sr.reveal('.autor', {
 
 /*----------SECCION SERVICIOS-----*/
 sr.reveal('.jumbotron', {
-    duration: 2000,
+    duration: 1500,
     origin: 'left',
     distance: '300px',
     delay: 500,
-    viewFactor: 0.2
+    viewFactor: 0.1
   });
   sr.reveal('#h1servicios', {
     duration: 1999,

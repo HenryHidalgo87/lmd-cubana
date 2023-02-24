@@ -108,6 +108,11 @@ nav {
 .jumbotron {
   background-color: #FF0031 !important;
 }
+
+#h1servicios {
+  padding-bottom: 0px !important;
+}
+
 #h4servicios {
   color: #f1f1f1;
 }
@@ -149,6 +154,7 @@ background-image: url(../img/Message_sent.png);
     background-repeat: no-repeat;
   background-position: right;
   background-size: 100px;
+  height: 200px !important;
 }
 
 .card-2{
@@ -156,6 +162,7 @@ background-image: url(../img/Message_sent.png);
     background-repeat: no-repeat;
   background-position: right;
   background-size: 100px;
+  height: 200px !important;
 }
 
 .card-3{
@@ -163,6 +170,7 @@ background-image: url(../img/Message_sent.png);
     background-repeat: no-repeat;
   background-position: right;
   background-size: 90px;
+  height: 200px !important;
 }
 
 .card-4{
@@ -170,6 +178,7 @@ background-image: url(../img/wedding.png);
     background-repeat: no-repeat;
   background-position: right;
   background-size: 120px;
+  height: 200px !important;
 }
 
 .card-5{
@@ -177,6 +186,7 @@ background-image: url(../img/wedding.png);
     background-repeat: no-repeat;
   background-position: right;
   background-size: 100px;
+  height: 200px !important;
 }
 
 .card-6{
@@ -184,6 +194,7 @@ background-image: url(../img/wedding.png);
     background-repeat: no-repeat;
   background-position: right;
   background-size: 100px;
+  height: 200px !important;
 }
 
 /* ACERCA DE */
@@ -303,4 +314,9 @@ background-image: url(../img/wedding.png);
 /* CONTACT */
 #contact-card{
   min-width: 260px;
+}
+
+/*IMG*/
+div img {
+  max-width: 90%;
 }
