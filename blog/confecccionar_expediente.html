@@ -34,7 +34,7 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link active keychainify-checked" href="../index.html">Inicio
+            <a class="nav-link active keychainify-checked" href="/">Inicio
             </a>
           </li>
           <li class="nav-item">
@@ -96,8 +96,8 @@
   <!-- Fin Navegacion-->
   <header class="bg-light">
     <div class="container py-5">
-      <h1 class="h1 text-danger">Cómo confecionamos el expediente?</h1>
-      <span class="h5">Aquí los ejemplos según el anexo que nos corresponda.</span>
+      <h1 class="h1 text-danger">Contrata nuestro servicio de conformación del expediente según su Anexo para adquirir la ciudadanía española, estamos aquí para hacer que el proceso sea lo más fácil y sin estrés posible.</h1>
+      <span class="h5">Aquí los anexos según le corresponda.</span>
     </div>
   </header>
   <section>
@@ -109,32 +109,46 @@
               style="width: 200px;">
             <div class="card-body">
               <h5 class="card-title">Anexo I</I></h5>
-              <p class="card-text">Ejemplo de como debe llenar un expediente de Anexo I.</p>
-              <a href="#" class="btn btn-primary">Ver Ejemplo</a>
+              <p class="card-text">Para las personas cuyo padre o madre, abuelo o abuela hubiese sido originariamente español.</p>
+              <a href="#" class="btn btn-primary" onclick="enviarCorreoI()">Contáctenos</a>
             </div>
           </div>
+          <script>
+            function enviarCorreoI() {
+              window.location.href = "mailto:destinatario@ejemplo.com?subject=Encargo%20de%20Anexo%20I";
+            }
+          </script>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card h-100">
-            <img src="../img/2.jpg" class="card-img-top rounded-circle my-3 img-fluid d-block mx-auto" alt="Anexo 2"
-              style="width: 200px;">
+            <img src="../img/2.jpg" class="card-img-top rounded-circle my-3 img-fluid d-block mx-auto" alt="Anexo 2" style="width: 200px;">
             <div class="card-body">
               <h5 class="card-title">Anexo II</h5>
-              <p class="card-text">Ejemplo de como debe llenar un expediente de Anexo II.</p>
-              <a href="#" class="btn btn-primary">Ver Ejemplo</a>
+              <p class="card-text">Hijos de españolas de origen</p>
+              <a href="#" class="btn btn-primary" onclick="enviarCorreoII()">Contáctenos</a>
             </div>
           </div>
         </div>
+        <script>
+          function enviarCorreoII() {
+            window.location.href = "mailto:destinatario@ejemplo.com?subject=Encargo%20de%20Anexo%20II";
+          }
+        </script>
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card h-100">
             <img src="../img/3.jpg" class="card-img-top rounded-circle my-3 img-fluid d-block mx-auto" alt="Anexo 3"
               style="width: 200px;">
             <div class="card-body">
               <h5 class="card-title">Anexo III</h5>
-              <p class="card-text">Ejemplo de como debe llenar un expediente de Anexo III.</p>
-              <a href="#" class="btn btn-primary">Ver Ejemplo</a>
+              <p class="card-text">Hijos mayores de españoles nacionalicidos por la ley 52/07 y ley 20/22.</p>
+              <a href="#" class="btn btn-primary" onclick="enviarCorreoIII()">Contáctenos</a>
             </div>
           </div>
+          <script>
+            function enviarCorreoIII() {
+              window.location.href = "mailto:destinatario@ejemplo.com?subject=Encargo%20de%20Anexo%20III";
+            }
+          </script>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card h-100">
@@ -142,10 +156,15 @@
               style="width: 200px;">
             <div class="card-body">
               <h5 class="card-title">Anexo IV</h5>
-              <p class="card-text">Ejemplo de como debe llenar un expediente de Anexo IV.</p>
-              <a href="#" class="btn btn-primary">Ver Ejemplo</a>
+              <p class="card-text">Hijo de españoles que optaron por el  artículo 20.1.a) y  artículo 20.1.b).</p>
+              <a href="#" class="btn btn-primary" onclick="enviarCorreoIV()">Contáctenos</a>
             </div>
           </div>
+          <script>
+            function enviarCorreoIV() {
+              window.location.href = "mailto:destinatario@ejemplo.com?subject=Encargo%20de%20Anexo%20IV";
+            }
+          </script>
         </div>
       </div>
     </div>
@@ -161,7 +180,7 @@
     </div>
     <div class="autor text-center">
       <!----<p class="h5"><span>-Henry Hidalgo</span></p>---->
-      <a class="btn btn-primary" href="/#contact-title" role="button">Contáctenos</a>
+      <a class="btn btn-primary" href="#contact-title" role="button">Contáctenos</a>
     </div>
   </section>
   <!-- FOOTER -->
