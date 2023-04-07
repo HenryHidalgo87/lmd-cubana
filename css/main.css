@@ -166,18 +166,18 @@ background-image: url(../img/Message_sent.png);
 }
 
 .card-3{
- background-image: url(../img/Mail.png);
+ background-image: url(../img/certificacion_española.png);
     background-repeat: no-repeat;
   background-position: right;
-  background-size: 90px;
+  background-size: 120px;
   height: 200px !important;
 }
 
 .card-4{
-background-image: url(../img/wedding.png);
+background-image: url(../img/cita_botones.jpg);
     background-repeat: no-repeat;
   background-position: right;
-  background-size: 120px;
+  background-size: 100px;
   height: 200px !important;
 }
 
