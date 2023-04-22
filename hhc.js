@@ -6,6 +6,14 @@ const preguntas = {
         siguiente: { "Sí": "parentesco", "No": null },
         anterior: [null]
     },
+    // correo_electronico: {
+    //     pregunta: "Por favor, introduce tu dirección de correo electrónico:",
+    //     opciones: [],
+    //     siguiente: {
+    //         "correo electrónico": "parentesco"
+    //     },
+    //     anterior: "bienvenida"
+    // },
     parentesco: {
         //------PARENTESCO----------------------------------------------------------------------------------
         pregunta: "¿Cuál es tu grado de parentesco con el ciudadano español?",
@@ -183,8 +191,7 @@ const encuestaDiv = document.getElementById("encuesta");
 
 function mostrarPregunta() {
     const preguntaActual = preguntas[claveActual];
-    if (preguntaActual && preguntaActual.opciones && Array.isArray(preguntaActual.opciones)) {
-        console.log(preguntaActual);
+    if (preguntaActual && preguntaActual.opciones && preguntaActual.opciones.length > 0) {
         let html = `<h2>${preguntaActual.pregunta}</h2>`;
         html += '<select id="opcion" class="form-select" required>';
         for (const opcion of preguntaActual.opciones) {
@@ -192,13 +199,16 @@ function mostrarPregunta() {
         }
         html += '</select>';
         encuestaDiv.innerHTML = html;
-    }
-    else {
+    } else if (preguntaActual && preguntaActual.pregunta === "Por favor, introduce tu dirección de correo electrónico:") {
+        let html = `<h2>${preguntaActual.pregunta}</h2>`;
+        html += '<input type="email" id="opcion" class="form-control" required>';
+        encuestaDiv.innerHTML = html;
+    } else {
         console.error(`La pregunta actual (${claveActual}) no está definida correctamente en el objeto "preguntas".`);
     }
 }
-
 let respuestas = {}; // Define la variable "respuestas" antes de utilizarla
+
 
 function siguientePregunta() {
     const select = document.getElementById('opcion');
@@ -224,26 +234,9 @@ function siguientePregunta() {
     }
 }
 
-
-function retrocederPregunta() {
-    const preguntaActual = preguntas[claveActual];
-    if (preguntaActual && preguntaActual.anterior) {
-        const nombrePreguntaAnterior = preguntaActual.anterior[0];
-
-        claveActual = nombrePreguntaAnterior;
-        mostrarPregunta();
-        document.getElementById("siguiente").removeAttribute("disabled");
-        if (preguntas[claveActual].siguiente.inverso === null) {
-            document.getElementById("atras").setAttribute("disabled", "disabled");
-        }
-    } else {
-        console.error(`La pregunta actual (${claveActual}) no está definida correctamente en el objeto "preguntas".`);
-    }
-}
-
-
 function mostrarResultado(respuestas) {
     let elegible = false;
+    let correoElectronico;
 
     console.log("Respuestas recibidas:", respuestas);
 
@@ -255,56 +248,178 @@ function mostrarResultado(respuestas) {
     if (aceptaCondiciones) {
         const metodoPago = prompt("Haga una transferencia de 100 MN a esta cuenta: 9200-1299-7101-5751 e introduzca el Nro. Transaccion aqui para comprobarlo:");
 
-        if (metodoPago && regex.test(metodoPago)) {
-            console.log("Simulación de comprobación del método de pago...");
-            // Obtener la referencia al elemento que contiene el spinner
-            const spinner = document.querySelector('.spinner-border');
-            // Mostrar el spinner quitando el atributo "hidden" por 5 segundos
-            spinner.removeAttribute('hidden');
-            setTimeout(() => {
-                // Ocultar el spinner nuevamente después de 5 segundos
-                spinner.setAttribute('hidden', '');
-            }, 5000);
+        if (aceptaCondiciones) {
+            correoElectronico = prompt("Por favor, ingrese su correo electrónico:");
 
-            setTimeout(function () {
-                if (Math.random() < 0.8) { // Simula una tasa de aprobación del 80%
-                    if (respuestas.renuncia_ciudadania === "Sí" &&
-                        respuestas.antes_despues === "Sí" &&
-                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                        respuestas.estado_fisico === "Vivo" &&
-                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                        respuestas.estado_fisico_mp === "Vivo") {
-                        elegible = true;
-                        console.log("El usuario es elegible para la ciudadanía española (Bisnieto_1-Anexo III)");
-                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
-                        // FIN BISNIETO 1----------------
-                    } else if (respuestas.renuncia_ciudadania === "Sí" &&
-                        respuestas.antes_despues === "Sí" &&
-                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                        respuestas.estado_fisico === "Vivo" &&
-                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                        respuestas.estado_fisico_mp === "Muerto") {
-                        elegible = true;
-                        console.log("El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I (Bisnieto_2)");
-                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><p>El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
-                    }
+            if (!correoElectronico || correoElectronico.trim() === "") {
+                console.log("Debe ingresar un correo electrónico válido.");
+                encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe ingresar un correo electrónico válido.</p>`;
+                return;
+            }
 
-                    else {
-                        console.log("El usuario NO es elegible para la ciudadanía española");
-                        encuestaDiv.innerHTML = `<h2>Resultado</h2><p>No eres elegible para solicitar la ciudadanía española.</p>`;
+            respuestas["correoElectronico"] = correoElectronico;
+            if (metodoPago && regex.test(metodoPago)) {
+                console.log("Simulación de comprobación del método de pago...");
+                // Obtener la referencia al elemento que contiene el spinner
+                const spinner = document.querySelector('.spinner-border');
+                // Mostrar el spinner quitando el atributo "hidden" por 5 segundos
+                spinner.removeAttribute('hidden');
+                setTimeout(() => {
+                    // Ocultar el spinner nuevamente después de 5 segundos
+                    spinner.setAttribute('hidden', '');
+                }, 5000);
+
+                setTimeout(function () {
+                    if (Math.random() < 1.0) { // Simula una tasa de aprobación del 100%
+                        if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "Sí" &&
+                            respuestas.antes_despues === "Sí" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Vivo" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Vivo") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española (Bisnieto_1-Anexo III)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 1----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "Sí" &&
+                            respuestas.antes_despues === "Sí" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Vivo" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Muerto") {
+                            elegible = true;
+                            console.log("El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I (Bisnieto_2)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><p>El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 2----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "Sí" &&
+                            respuestas.antes_despues === "Sí" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Muerto" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Vivo") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española (Bisnieto_3-Anexo III)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_3</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 3----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "Sí" &&
+                            respuestas.antes_despues === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Vivo" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Vivo") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_5)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_5</h2><p>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 5----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "Sí" &&
+                            respuestas.antes_despues === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Vivo" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Muerto") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_6)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_6</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 6----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "Sí" &&
+                            respuestas.antes_despues === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Muerto" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Vivo") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o por Anexo III(Bisnieto_7)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_7</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo I o por Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 7----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "Sí" &&
+                            respuestas.antes_despues === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Muerto" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Muerto") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_8)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_8</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 8----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Vivo" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Vivo") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_9)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_9</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo I o Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 9----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Vivo" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Muerto") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_10)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 10----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Muerto" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Vivo") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_11)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_11</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo I o Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 11----------------
+                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                            respuestas.renuncia_ciudadania === "No" &&
+                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Muerto" &&
+                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                            respuestas.estado_fisico_mp === "Muerto") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_12)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_12</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 12----------------
+
+                            //-INICIO DE BISABUELA------------
+                        } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                            respuestas.se_casa === "Cubano" &&
+                            respuestas.antes_despues_hijos_bisabuela === "Sí" &&
+                            (respuestas.quien_hijo_bisabuela.includes("Mi abuelo") || respuestas.quien_hijo_bisabuela.includes("Mi abuela")) &&
+                            respuestas.estado_fisico === "Vivo" &&
+                            (quien_nieto_bisabuela.includes("Mi padre") || quien_nieto_bisabuela.includes("Mi madre")) &&
+                            estado_fisico_nieto_bisabuela === "Vivo") {
+                            elegible = true;
+                            console.log("El usuario es elegible para la ciudadanía española (Bisnieto_de Bisabuela 1-Anexo III)");
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_de Bisabuela 1-Anexo III</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+                            // FIN BISNIETO 1/BISABUELA----------------
+                        }
+
+                        else {
+                            console.log("El usuario NO es elegible para la ciudadanía española");
+                            encuestaDiv.innerHTML = `<h2>Resultado</h2><p>No eres elegible para solicitar la ciudadanía española.</p>`;
+                        }
+                    } else {
+                        console.log("El método de pago no fue aprobado.");
+                        encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Lo sentimos, su Nro. Transacción no es correcto. Por favor, inténtelo de nuevo.</p>`;
                     }
-                } else {
-                    console.log("El método de pago no fue aprobado.");
-                    encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Lo sentimos, su método de pago no fue aprobado. Por favor, inténtelo de nuevo con otro método de pago.</p>`;
-                }
-            }, 5000); // Espera 5 segundos para simular la comprobación del método de pago
+                }, 5000); // Espera 5 segundos para simular la comprobación del método de pago
+            } else {
+                console.log("Debe introducir Nro. Transacción Correcto.");
+                encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe introducir Nro. Transacción Correcto.</p>`;
+            }
         } else {
-            console.log("Debe introducir Nro. Transacción Correcto.");
-            encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe introducir Nro. Transacción Correcto.</p>`;
+            console.log("Debe aceptar las condiciones para ver el resultado.");
+            encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Debe aceptar las condiciones para ver el resultado.</p>`;
         }
-    } else {
-        console.log("Debe aceptar las condiciones para ver el resultado.");
-        encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Debe aceptar las condiciones para ver el resultado.</p>`;
     }
 }
 
@@ -313,7 +428,7 @@ function refrescarEncuesta() {
     claveActual = "bienvenida";
     mostrarPregunta();
     document.getElementById("siguiente").style.display = "inline";
-    document.getElementById("atras").style.display = "inline";
+    document.getElementById("atras").style.display = "none";
     document.getElementById("resultado").style.display = "none";
 }
 
