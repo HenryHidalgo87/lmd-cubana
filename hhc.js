@@ -234,11 +234,137 @@ function siguientePregunta() {
     }
 }
 
+function obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, estadoCivilPadres, estadoCivilBisabuelo) {
+    let respuesta = "";
+
+    if (estadoCivilBisabuelo) {
+        switch (estadoCivilBisabuelo) {
+            case "Progenitores casados por el consulado":
+                respuesta += "Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.";
+                break;
+            case "Progenitores casados por el Registro Civil Cubano":
+                respuesta += "Debes presentar el certificado de matrimonio cubano";
+                break;
+            case "Progenitores casados pero actualmente uno de ellos fallecido":
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.";
+                break;
+            case "Progenitores casados pero actualmente son divorciados":
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonioo certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
+                break;
+            case "Nació de padres aun solteros":
+                respuesta = "Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.";
+                break;
+            case "Nació de padres solteros pero uno/a de ellos ha fallecido":
+                respuesta = "Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..";
+                break;
+            case "Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados":
+                respuesta = "Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.";
+                break;
+            case "Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas":
+                respuesta = "Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.";
+                break;
+            case "Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio":
+                respuesta = "Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.";
+                break;
+            case "Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas":
+                respuesta = "Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.";
+                break;
+            default:
+                respuesta = "Lo siento, no se reconoce el estado civil del bisabuelo que has introducido.";
+                break;
+        }
+    }
+
+    if (estadoCivilAbuelos) {
+        switch (estadoCivilAbuelos) {
+            case "Progenitores casados por el consulado":
+                respuesta += "Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.";
+                break;
+            case "Progenitores casados por el Registro Civil Cubano":
+                respuesta += "Debes presentar el certificado de matrimonio cubano";
+                break;
+            case "Progenitores casados pero actualmente uno de ellos fallecido":
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.";
+                break;
+            case "Progenitores casados pero actualmente son divorciados":
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonioo certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
+                break;
+            case "Nació de padres aun solteros":
+                respuesta = "Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.";
+                break;
+            case "Nació de padres solteros pero uno/a de ellos ha fallecido":
+                respuesta = "Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..";
+                break;
+            case "Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados":
+                respuesta = "Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.";
+                break;
+            case "Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas":
+                respuesta = "Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.";
+                break;
+            case "Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio":
+                respuesta = "Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.";
+                break;
+            case "Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas":
+                respuesta = "Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.";
+                break;
+            default:
+                respuesta += "Lo siento, no se reconoce el estado civil de los abuelos que has introducido.";
+                break;
+        }
+    }
+
+    if (estadoCivilPadres) {
+        switch (estadoCivilPadres) {
+            case "Progenitores casados por el consulado":
+                respuesta += "Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.";
+                break;
+            case "Progenitores casados por el Registro Civil Cubano":
+                respuesta += "Debes presentar el certificado de matrimonio cubano";
+                break;
+            case "Progenitores casados pero actualmente uno de ellos fallecido":
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.";
+                break;
+            case "Progenitores casados pero actualmente son divorciados":
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonioo certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
+                break;
+            case "Nació de padres aun solteros":
+                respuesta = "Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.";
+                break;
+            case "Nació de padres solteros pero uno/a de ellos ha fallecido":
+                respuesta = "Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..";
+                break;
+            case "Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados":
+                respuesta = "Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.";
+                break;
+            case "Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas":
+                respuesta = "Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.";
+                break;
+            case "Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio":
+                respuesta = "Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.";
+                break;
+            case "Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas":
+                respuesta = "Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.";
+                break;
+            default:
+                respuesta += "Lo siento, no se reconoce el estado civil de los padres que has introducido.";
+                break;
+        }
+    }
+
+    return respuesta;
+}
+
+
 function mostrarResultado(respuestas) {
     let elegible = false;
+    // Obtener el valor de correoElectronico desde las respuestas recibidas
     let correoElectronico;
 
     console.log("Respuestas recibidas:", respuestas);
+    // Capturar la información de respuestas en una nueva variable
+    const respuestasCapturadas = respuestas;
+
+
 
     const regex = /^[A-Z0-9]{13}$/;
 
@@ -259,7 +385,7 @@ function mostrarResultado(respuestas) {
 
             respuestas["correoElectronico"] = correoElectronico;
             if (metodoPago && regex.test(metodoPago)) {
-                console.log("Simulación de comprobación del método de pago...");
+                // console.log("Simulación de comprobación del método de pago...");
                 // Obtener la referencia al elemento que contiene el spinner
                 const spinner = document.querySelector('.spinner-border');
                 // Mostrar el spinner quitando el atributo "hidden" por 5 segundos
@@ -280,7 +406,33 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Vivo") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española (Bisnieto_1-Anexo III)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Original de la certificación literal española de nacimiento del padre o de la madre de los solicitantes mayores de edad que opten a la nacionalidad española, al haberse reconocido a sus progenitores la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            Nota 1: Si el nacimiento del progenitor/a consta inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
                             // FIN BISNIETO 1----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "Sí" &&
@@ -291,7 +443,40 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Muerto") {
                             elegible = true;
                             console.log("El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I (Bisnieto_2)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><p>El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                            const estadoCivilAbuelos = respuestas.estado_civil_de_los_abuelos;
+                            const estadoCivilPadres = respuestas.estado_civil_de_los_padres;
+                            const estadoCivilBisabuelo = respuestas.estado_civil_del_bisabuelo;
+
+                            // Verificar si los valores de las variables son los esperados
+                            console.log("Estado civil de los abuelos: ", estadoCivilAbuelos);
+                            console.log("Estado civil de los padres: ", estadoCivilPadres);
+                            console.log("Estado civil del bisabuelo: ", estadoCivilBisabuelo);
+
+                            const respuestaPorEstadoCivil = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, estadoCivilPadres,
+                                estadoCivilBisabuelo);
+
+                            // Acceder a los valores del estado civil por separado
+                            const estadoCivilAbuelosSeparado = respuestaPorEstadoCivil.abuelos;
+                            const estadoCivilPadresSeparado = respuestaPorEstadoCivil.padres;
+                            const estadoCivilBisabueloSeparado = respuestaPorEstadoCivil.bisabuelo;
+
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><strong><p>El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I</p></strong><p>A continuación, te indicamos los documentos que necesitarás para que su Abuelo/a presente su solicitud:</p></p>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Original de la certificación literal de nacimiento española de su padre o madre del solicitante, que originariamente hubiera sido español/a.<br>
+                            <strong>Nota:</strong> Si el nacimiento del progenitor/a consta inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br>
+                                 Abuelos: ${estadoCivilAbuelosSeparado}<br>
+                                Padres: ${estadoCivilPadresSeparado}<br>
+                                Bisabuelo: ${estadoCivilBisabueloSeparado}
+                            </li>
+                            </ol>
+                            <div>`;
                             // FIN BISNIETO 2----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "Sí" &&

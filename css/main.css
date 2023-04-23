@@ -320,3 +320,8 @@ background-image: url(../img/cita_botones.jpg);
 div img {
   max-width: 90%;
 }
+
+/* respuesta cuestionario */
+ol#requisitos > li {
+  text-align: left !important;
+}
