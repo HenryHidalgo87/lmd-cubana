@@ -249,7 +249,7 @@ function obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, estadoCivilPadres, e
                 respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.";
                 break;
             case "Progenitores casados pero actualmente son divorciados":
-                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonioo certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
                 break;
             case "Nació de padres aun solteros":
                 respuesta = "Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.";
@@ -287,7 +287,7 @@ function obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, estadoCivilPadres, e
                 respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.";
                 break;
             case "Progenitores casados pero actualmente son divorciados":
-                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonioo certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
                 break;
             case "Nació de padres aun solteros":
                 respuesta = "Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.";
@@ -325,7 +325,7 @@ function obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, estadoCivilPadres, e
                 respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.";
                 break;
             case "Progenitores casados pero actualmente son divorciados":
-                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonioo certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
+                respuesta = "Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.";
                 break;
             case "Nació de padres aun solteros":
                 respuesta = "Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.";
@@ -407,28 +407,47 @@ function mostrarResultado(respuestas) {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española (Bisnieto_1-Anexo III)");
 
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
                             const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
                             const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
                             const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
                             const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
                             const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
                             const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
                             console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
+                            //--ANEXO III----------
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
                             <div class="text-left">
                             <ol id="requisitos" class="text-left">
-                            <li class="text-left">Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
                             <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
-                            <li>Original de la certificación literal española de nacimiento del padre o de la madre de los solicitantes mayores de edad que opten a la nacionalidad española, al haberse reconocido a sus progenitores la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
-                            Nota 1: Si el nacimiento del progenitor/a consta inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
                             </ol>
@@ -444,37 +463,49 @@ function mostrarResultado(respuestas) {
                             elegible = true;
                             console.log("El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I (Bisnieto_2)");
 
-                            const estadoCivilAbuelos = respuestas.estado_civil_de_los_abuelos;
-                            const estadoCivilPadres = respuestas.estado_civil_de_los_padres;
-                            const estadoCivilBisabuelo = respuestas.estado_civil_del_bisabuelo;
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // Verificar si los valores de las variables son los esperados
-                            console.log("Estado civil de los abuelos: ", estadoCivilAbuelos);
-                            console.log("Estado civil de los padres: ", estadoCivilPadres);
-                            console.log("Estado civil del bisabuelo: ", estadoCivilBisabuelo);
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            const respuestaPorEstadoCivil = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, estadoCivilPadres,
-                                estadoCivilBisabuelo);
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Acceder a los valores del estado civil por separado
-                            const estadoCivilAbuelosSeparado = respuestaPorEstadoCivil.abuelos;
-                            const estadoCivilPadresSeparado = respuestaPorEstadoCivil.padres;
-                            const estadoCivilBisabueloSeparado = respuestaPorEstadoCivil.bisabuelo;
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><strong><p>El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I</p></strong><p>A continuación, te indicamos los documentos que necesitarás para que su Abuelo/a presente su solicitud:</p></p>
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><p><strong>Usted no es elegible para la ciudadanía española pero su ${soloAbuelo} si por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para que su ${soloAbuelo} pueda presentar su solicitud:</p>
                             <div class="text-left">
                             <ol id="requisitos" class="text-left">
                             <li class="text-left">Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
                             <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
-                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
-                            <li>Original de la certificación literal de nacimiento española de su padre o madre del solicitante, que originariamente hubiera sido español/a.<br>
-                            <strong>Nota:</strong> Si el nacimiento del progenitor/a consta inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.</li>
-                            <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br>
-                                 Abuelos: ${estadoCivilAbuelosSeparado}<br>
-                                Padres: ${estadoCivilPadresSeparado}<br>
-                                Bisabuelo: ${estadoCivilBisabueloSeparado}
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo} y legalizado en el MINREX.</li>
+                            <li>Original de la certificación literal de nacimiento española del progenitor de su ${soloAbuelo}, que originariamente hubiera sido español/a.
                             </li>
+                            <li>Original y copia del carnet de identidad de su ${soloAbuelo}.</li>
+                            <li>Referente al Estado civil de los progenitores de su ${soloAbuelo} al momento del nacimiento:<br> ${respuestaBisabuelo}.</li>
                             </ol>
                             <div>`;
                             // FIN BISNIETO 2----------------
@@ -487,7 +518,53 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Vivo") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española (Bisnieto_3-Anexo III)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_3</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                            //--ANEXO III----------
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_3</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
+
                             // FIN BISNIETO 3----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "Sí" &&
@@ -498,7 +575,73 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Vivo") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_5)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_5</h2><p>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                            // ANEXO I y ANEXO III
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_5</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>2-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            </ol><hr>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3><br>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
                             // FIN BISNIETO 5----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "Sí" &&
@@ -509,7 +652,60 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Muerto") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_6)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_6</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                             // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                            
+                            // ANEXO I
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_6</h2><strong><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p></strong><br>
+                            <p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Certificado de defunción de su ${soloPadres}.</li>
+                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol>
+                            <div>`;
                             // FIN BISNIETO 6----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "Sí" &&
@@ -520,7 +716,74 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Vivo") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española por Anexo I o por Anexo III(Bisnieto_7)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_7</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo I o por Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                            
+                            // ANEXO I y ANEXO III
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_7</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br><hr>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
                             // FIN BISNIETO 7----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "Sí" &&
@@ -531,7 +794,60 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Muerto") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_8)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_8</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                            // ANEXO I
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_8</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Certificación de defunción de su ${soloPadres} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>`;
                             // FIN BISNIETO 8----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "No" &&
@@ -541,7 +857,72 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Vivo") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_9)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_9</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo I o Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                             // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                            
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_9</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
                             // FIN BISNIETO 9----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "No" &&
@@ -551,7 +932,59 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Muerto") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_10)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                             // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                            // ANEXO I-Defuncion 
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloPadres}.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>`;
                             // FIN BISNIETO 10----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "No" &&
@@ -561,7 +994,74 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Vivo") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_11)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_11</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo I o Anexo III.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                            // ANEXO I y ANEXO III
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_11</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br><hr>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol>
+                            <div>`;
                             // FIN BISNIETO 11----------------
                         } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                             respuestas.renuncia_ciudadania === "No" &&
@@ -571,7 +1071,60 @@ function mostrarResultado(respuestas) {
                             respuestas.estado_fisico_mp === "Muerto") {
                             elegible = true;
                             console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_12)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_12</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
+
+                            // -----------------------Progenitores -------------------------------------------------------------------
+                            // (progenitorBisabuelo)
+                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                            // (progenitorAbuelos)
+                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                            //console.log(soloAbuelo); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                            // (progenitorPadres)
+                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                            const soloPadres = progenitorPadres.split(" ")[1];
+                            //console.log(soloPadres); // Imprime "Abuelo"
+                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                            // Estados-Civiles------------------------------------------------------------------
+                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                            // ANEXO I
+                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_12</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Certificación de defunción de su ${soloPadres} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>`;
                             // FIN BISNIETO 12----------------
 
                             //-INICIO DE BISABUELA------------
@@ -590,7 +1143,7 @@ function mostrarResultado(respuestas) {
 
                         else {
                             console.log("El usuario NO es elegible para la ciudadanía española");
-                            encuestaDiv.innerHTML = `<h2>Resultado</h2><p>No eres elegible para solicitar la ciudadanía española.</p>`;
+                            encuestaDiv.innerHTML = `<h2>Resultado</h2><p>No eres elegible para solicitar la ciudadanía española por la leyes vigentes.</p>`;
                         }
                     } else {
                         console.log("El método de pago no fue aprobado.");
@@ -613,7 +1166,7 @@ function refrescarEncuesta() {
     claveActual = "bienvenida";
     mostrarPregunta();
     document.getElementById("siguiente").style.display = "inline";
-    document.getElementById("atras").style.display = "none";
+    document.getElementById("atras").style.display = "inline";
     document.getElementById("resultado").style.display = "none";
 }
 
