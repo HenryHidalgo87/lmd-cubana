@@ -169,7 +169,7 @@ const preguntas = {
         pregunta: "Su Bisabuela se caso con:",
         opciones: ["Español", "Cubano"],
         siguiente: {
-            "Español": "quien_hijo_bisabuela",
+            "Español": "quien_hijo",
             "Cubano": "antes_despues_hijos_bisabuela"
         },
         anterior: ["parentesco"]
@@ -228,6 +228,15 @@ function siguientePregunta() {
         mostrarResultado(respuestas); // Pasa la variable "respuestas" como argumento a la función "mostrarResultado"
     } else if (preguntas.hasOwnProperty(claveSiguiente)) {
         claveActual = claveSiguiente;
+
+        // Actualizar la pregunta actual con la información del hijo o hija
+        if (claveActual === "estado_civil_del_bisabuelo") {
+            preguntas[claveActual].pregunta = "Que estado civil tenía el bisabuelo/a al momento del nacimiento de su hijo/a:";
+            if (respuestas["parentesco"] === "Es mi bisabuelo") {
+                preguntas[claveActual].pregunta = "Que estado civil tenía el bisabuelo al momento del nacimiento de su hijo/a:";
+            }
+        }
+
         mostrarPregunta();
     } else {
         console.error(`La clave siguiente (${claveSiguiente}) no está definida correctamente en el objeto "preguntas".`);
@@ -358,7 +367,7 @@ function obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, estadoCivilPadres, e
 function mostrarResultado(respuestas) {
     let elegible = false;
     // Obtener el valor de correoElectronico desde las respuestas recibidas
-    let correoElectronico;
+    //let correoElectronico;
 
     console.log("Respuestas recibidas:", respuestas);
     // Capturar la información de respuestas en una nueva variable
@@ -374,73 +383,73 @@ function mostrarResultado(respuestas) {
     if (aceptaCondiciones) {
         const metodoPago = prompt("Haga una transferencia de 100 MN a esta cuenta: 9200-1299-7101-5751 e introduzca el Nro. Transaccion aqui para comprobarlo:");
 
-        if (aceptaCondiciones) {
-            correoElectronico = prompt("Por favor, ingrese su correo electrónico:");
+        //if (aceptaCondiciones) {
+        //correoElectronico = prompt("Por favor, ingrese su correo electrónico:");
 
-            if (!correoElectronico || correoElectronico.trim() === "") {
-                console.log("Debe ingresar un correo electrónico válido.");
-                encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe ingresar un correo electrónico válido.</p>`;
-                return;
-            }
+        // if (!correoElectronico || correoElectronico.trim() === "") {
+        //     console.log("Debe ingresar un correo electrónico válido.");
+        //     encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe ingresar un correo electrónico válido.</p>`;
+        //     return;
+        // }
 
-            respuestas["correoElectronico"] = correoElectronico;
-            if (metodoPago && regex.test(metodoPago)) {
-                // console.log("Simulación de comprobación del método de pago...");
-                // Obtener la referencia al elemento que contiene el spinner
-                const spinner = document.querySelector('.spinner-border');
-                // Mostrar el spinner quitando el atributo "hidden" por 5 segundos
-                spinner.removeAttribute('hidden');
-                setTimeout(() => {
-                    // Ocultar el spinner nuevamente después de 5 segundos
-                    spinner.setAttribute('hidden', '');
-                }, 5000);
+        // respuestas["correoElectronico"] = correoElectronico;
+        if (metodoPago && regex.test(metodoPago)) {
+            // console.log("Simulación de comprobación del método de pago...");
+            // Obtener la referencia al elemento que contiene el spinner
+            const spinner = document.querySelector('.spinner-border');
+            // Mostrar el spinner quitando el atributo "hidden" por 5 segundos
+            spinner.removeAttribute('hidden');
+            setTimeout(() => {
+                // Ocultar el spinner nuevamente después de 5 segundos
+                spinner.setAttribute('hidden', '');
+            }, 5000);
 
-                setTimeout(function () {
-                    if (Math.random() < 1.0) { // Simula una tasa de aprobación del 100%
-                        if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "Sí" &&
-                            respuestas.antes_despues === "Sí" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Vivo" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Vivo") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española (Bisnieto_1-Anexo III)");
+            setTimeout(function () {
+                if (Math.random() < 1.0) { // Simula una tasa de aprobación del 100%
+                    if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "Sí" &&
+                        respuestas.antes_despues === "Sí" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española (Bisnieto_1-Anexo III)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-                            //--ANEXO III----------
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
+                        //--ANEXO III----------
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
                             <div class="text-left">
                             <ol id="requisitos" class="text-left">
                             <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
@@ -452,51 +461,51 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
-                            // FIN BISNIETO 1----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "Sí" &&
-                            respuestas.antes_despues === "Sí" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Vivo" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Muerto") {
-                            elegible = true;
-                            console.log("El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I (Bisnieto_2)");
+                        // FIN BISNIETO 1----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "Sí" &&
+                        respuestas.antes_despues === "Sí" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I (Bisnieto_2)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
 
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><p><strong>Usted no es elegible para la ciudadanía española pero su ${soloAbuelo} si por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para que su ${soloAbuelo} pueda presentar su solicitud:</p>
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><p><strong>Usted no es elegible para la ciudadanía española pero su ${soloAbuelo} si por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para que su ${soloAbuelo} pueda presentar su solicitud:</p>
                             <div class="text-left">
                             <ol id="requisitos" class="text-left">
                             <li class="text-left">Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
@@ -508,51 +517,51 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de los progenitores de su ${soloAbuelo} al momento del nacimiento:<br> ${respuestaBisabuelo}.</li>
                             </ol>
                             <div>`;
-                            // FIN BISNIETO 2----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "Sí" &&
-                            respuestas.antes_despues === "Sí" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Muerto" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Vivo") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española (Bisnieto_3-Anexo III)");
+                        // FIN BISNIETO 2----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "Sí" &&
+                        respuestas.antes_despues === "Sí" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española (Bisnieto_3-Anexo III)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-                            //--ANEXO III----------
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_3</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
+                        //--ANEXO III----------
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_3</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
                             <div class="text-left">
                             <ol id="requisitos" class="text-left">
                             <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
@@ -565,51 +574,51 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
 
-                            // FIN BISNIETO 3----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "Sí" &&
-                            respuestas.antes_despues === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Vivo" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Vivo") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_5)");
+                        // FIN BISNIETO 3----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "Sí" &&
+                        respuestas.antes_despues === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_5)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-                            // ANEXO I y ANEXO III
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_5</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                        // ANEXO I y ANEXO III
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_5</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
                             <div>
@@ -623,7 +632,7 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
-                            <p>2-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            <p>2-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
@@ -642,51 +651,51 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
-                            // FIN BISNIETO 5----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "Sí" &&
-                            respuestas.antes_despues === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Vivo" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Muerto") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_6)");
+                        // FIN BISNIETO 5----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "Sí" &&
+                        respuestas.antes_despues === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_6)");
 
-                             // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
-                            
-                            // ANEXO I
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_6</h2><strong><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p></strong><br>
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_6</h2><strong><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p></strong><br>
                             <p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <div>
                             <ol id="requisitos" class="text-left">
@@ -706,51 +715,51 @@ function mostrarResultado(respuestas) {
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
-                            // FIN BISNIETO 6----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "Sí" &&
-                            respuestas.antes_despues === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Muerto" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Vivo") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o por Anexo III(Bisnieto_7)");
+                        // FIN BISNIETO 6----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "Sí" &&
+                        respuestas.antes_despues === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o por Anexo III(Bisnieto_7)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
-                            
-                            // ANEXO I y ANEXO III
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_7</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I y ANEXO III
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_7</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
                             <div>
@@ -784,51 +793,51 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
-                            // FIN BISNIETO 7----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "Sí" &&
-                            respuestas.antes_despues === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Muerto" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Muerto") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_8)");
+                        // FIN BISNIETO 7----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "Sí" &&
+                        respuestas.antes_despues === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_8)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-                            // ANEXO I
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_8</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                        // ANEXO I
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_8</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <div>
                             <ol id="requisitos" class="text-left">
@@ -841,56 +850,56 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
-                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Certificación de defunción de su ${soloPadres} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
-                            // FIN BISNIETO 8----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Vivo" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Vivo") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_9)");
+                        // FIN BISNIETO 8----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_9)");
 
-                             // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
-                            
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_9</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_9</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
                             <div>
@@ -904,7 +913,7 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
-                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
@@ -923,50 +932,50 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
-                            // FIN BISNIETO 9----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Vivo" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Muerto") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_10)");
+                        // FIN BISNIETO 9----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_10)");
 
-                             // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-                            // ANEXO I-Defuncion 
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                        // ANEXO I-Defuncion 
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <div>
                             <ol id="requisitos" class="text-left">
@@ -979,56 +988,56 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
-                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
-                            // FIN BISNIETO 10----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Muerto" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Vivo") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_11)");
+                        // FIN BISNIETO 10----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_11)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-                            // ANEXO I y ANEXO III
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_11</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                        // ANEXO I y ANEXO III
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_11</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
                             <div>
@@ -1042,7 +1051,7 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
-                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
@@ -1062,50 +1071,50 @@ function mostrarResultado(respuestas) {
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
-                            // FIN BISNIETO 11----------------
-                        } else if (respuestas.parentesco === "Es mi bisabuelo" &&
-                            respuestas.renuncia_ciudadania === "No" &&
-                            (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Muerto" &&
-                            (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
-                            respuestas.estado_fisico_mp === "Muerto") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_12)");
+                        // FIN BISNIETO 11----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuelo" &&
+                        respuestas.renuncia_ciudadania === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_12)");
 
-                            // -----------------------Progenitores -------------------------------------------------------------------
-                            // (progenitorBisabuelo)
-                            const progenitorBisabuelo = respuestasCapturadas.parentesco;
-                            const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
-                            //console.log(soloBisabuelo); // Imprime "bisabuelo"
-                            console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
 
-                            // (progenitorAbuelos)
-                            const progenitorAbuelo = respuestasCapturadas.quien_hijo;
-                            const soloAbuelo = progenitorAbuelo.split(" ")[1];
-                            //console.log(soloAbuelo); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
 
-                            // (progenitorPadres)
-                            const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
-                            const soloPadres = progenitorPadres.split(" ")[1];
-                            //console.log(soloPadres); // Imprime "Abuelo"
-                            console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
 
-                            // Estados-Civiles------------------------------------------------------------------
-                            const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
-                            const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
-                            // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                            const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
-                            const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
-                            // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                            const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
-                            const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
-                            console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
-                            // ANEXO I
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_12</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                        // ANEXO I
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_12</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <div>
                             <ol id="requisitos" class="text-left">
@@ -1118,56 +1127,816 @@ function mostrarResultado(respuestas) {
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
-                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p><br>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Certificación de defunción de su ${soloPadres} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
-                            // FIN BISNIETO 12----------------
+                        // FIN BISNIETO 12----------------
 
-                            //-INICIO DE BISABUELA------------
-                        } else if (respuestas.parentesco === "Es mi bisabuela" &&
-                            respuestas.se_casa === "Cubano" &&
-                            respuestas.antes_despues_hijos_bisabuela === "Sí" &&
-                            (respuestas.quien_hijo_bisabuela.includes("Mi abuelo") || respuestas.quien_hijo_bisabuela.includes("Mi abuela")) &&
-                            respuestas.estado_fisico === "Vivo" &&
-                            (quien_nieto_bisabuela.includes("Mi padre") || quien_nieto_bisabuela.includes("Mi madre")) &&
-                            estado_fisico_nieto_bisabuela === "Vivo") {
-                            elegible = true;
-                            console.log("El usuario es elegible para la ciudadanía española (Bisnieto_de Bisabuela 1-Anexo III)");
-                            encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_de Bisabuela 1-Anexo III</h2><p>Eres elegible para solicitar la ciudadanía española por Anexo III después que su progenitor se presente por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><ul><li>Certificado de nacimiento</li><li>Certificado de antecedentes penales</li><li>Certificado de matrimonio (si corresponde)</li><li>Documento que acredite la relación de parentesco con el ciudadano español (por ejemplo, certificado de nacimiento del bisabuelo)</li><li>Certificado de renuncia a la ciudadanía anterior</li><li>Formulario de solicitud de nacionalidad española</li></ul>`;
-                            // FIN BISNIETO 1/BISABUELA----------------
-                        }
 
-                        else {
-                            console.log("El usuario NO es elegible para la ciudadanía española");
-                            encuestaDiv.innerHTML = `<h2>Resultado</h2><p>No eres elegible para solicitar la ciudadanía española por la leyes vigentes.</p>`;
-                        }
-                    } else {
-                        console.log("El método de pago no fue aprobado.");
-                        encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Lo sentimos, su Nro. Transacción no es correcto. Por favor, inténtelo de nuevo.</p>`;
+                        //-INICIO DE BISABUELA------------
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Cubano" &&
+                        respuestas.antes_despues_hijos_bisabuela === "Sí" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española (Bisnieto_de Bisabuela 1-Anexo III)");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        //--ANEXO III----------
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
+                        //1----------------BISABUELA--1--------------
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Cubano" &&
+                        respuestas.antes_despues_hijos_bisabuela === "Sí" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario no es elegible para la ciudadanía española pero su Abuelo si por Anexo I (Bisnieto_Bisabuela_2)");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_2</h2><p><strong>Usted no es elegible para la ciudadanía española pero su ${soloAbuelo} si por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para que su ${soloAbuelo} pueda presentar su solicitud:</p>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo} y legalizado en el MINREX.</li>
+                            <li>Original de la certificación literal de nacimiento española del progenitor de su ${soloAbuelo}, que originariamente hubiera sido español/a.
+                            </li>
+                            <li>Original y copia del carnet de identidad de su ${soloAbuelo}.</li>
+                            <li>Referente al Estado civil de los progenitores de su ${soloAbuelo} al momento del nacimiento:<br> ${respuestaBisabuelo}.</li>
+                            </ol>
+                            <div>`;
+                        //--FIN BISNIETO_BISABUELA_2-----------
+
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Cubano" &&
+                        respuestas.antes_despues_hijos_bisabuela === "Sí" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española (Bisnieto_Bisabuela_3-Anexo III)");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        //--ANEXO III----------
+                        encuestaDiv.innerHTML = `<h2>Bisnieto_Bisabuela_3</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
+                        //--FIN BISNIETO_BISABUELA_3-----------
+
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Cubano" &&
+                        respuestas.antes_despues_hijos_bisabuela === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española (Bisnieto_Bisabuela_5-Anexo III) por Anexo I o Anexo III");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I y ANEXO III
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_5</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>2-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            </ol><hr>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3><br>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
+
+                        //--FIN BISNIETO_BISABUELA_5-----------
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Cubano" &&
+                        respuestas.antes_despues_hijos_bisabuela === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_Bisabuela_6-Anexo I");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_6</h2><strong><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p></strong><br>
+                            <p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Certificado de defunción de su ${soloPadres}.</li>
+                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol>
+                            <div>`;
+                        // FIN BISNIETO_BISABUELA 6-------------
+
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Cubano" &&
+                        respuestas.antes_despues_hijos_bisabuela === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o por Anexo III(Bisnieto_Bisabuela_7)");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I y ANEXO III
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_7</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br><hr>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
+                        // FIN BISNIETO 7----------------
+
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Cubano" &&
+                        respuestas.antes_despues_hijos_bisabuela === "No" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Muerto" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Muerto") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_Bisabuela_8)");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_8</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Certificación de defunción de su ${soloPadres} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>`;
+                        // FIN BISNIETO BISABUELA_8------------
+
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                        respuestas.se_casa === "Español" &&
+                        (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                        respuestas.estado_fisico === "Vivo" &&
+                        (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                        respuestas.estado_fisico_mp === "Vivo") {
+                        elegible = true;
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_Bisabuela_9)");
+
+                        // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_9</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            </ol>
+                            <div>`;
+                        // FIN BISNIETO 9----------------
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                    respuestas.se_casa === "Español" &&
+                    (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                    respuestas.estado_fisico === "Vivo" &&
+                    (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                    respuestas.estado_fisico_mp === "Muerto") {
+                    elegible = true;
+                    console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_Bisabuela_10)");
+
+                    // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I-Defuncion 
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloPadres}.</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>`;
+                        // FIN BISNIETO BISABUELA 10----------
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                    respuestas.se_casa === "Español" &&
+                    (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                    respuestas.estado_fisico === "Muerto" &&
+                    (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                    respuestas.estado_fisico_mp === "Vivo") {
+                    elegible = true;
+                    console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_Bisabuela_11)");
+
+                    // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I y ANEXO III
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_11</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br><hr>
+                            <div>
+                            <h3 class="text-center">ANEXO III</h3>
+                            <strong>Nota:</strong> si presenta por Anexo III estos son los documentos relacionados:<br>
+                            <div class="text-left">
+                            <ol id="requisitos" class="text-left">
+                            <li class="text-left">Anexo III, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
+                            <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
+                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol>
+                            <div>`;
+                        // FIN BISNIETO_BISABUELA_11----------
+                    } else if (respuestas.parentesco === "Es mi bisabuela" &&
+                    respuestas.se_casa === "Español" &&
+                    (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
+                    respuestas.estado_fisico === "Muerto" &&
+                    (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
+                    respuestas.estado_fisico_mp === "Muerto") {
+                    elegible = true;
+                    console.log("El usuario es elegible para la ciudadanía española solo por Anexo I (Bisnieto_Bisabuela_12)");
+
+                    // -----------------------Progenitores -------------------------------------------------------------------
+                        // (progenitorBisabuelo)
+                        const progenitorBisabuelo = respuestasCapturadas.parentesco;
+                        const soloBisabuelo = progenitorBisabuelo.split(" ")[2];
+                        //console.log(soloBisabuelo); // Imprime "bisabuelo"
+                        console.log(`La respuesta cual es el parentesco es:${soloBisabuelo}`);
+
+                        // (progenitorAbuelos)
+                        const progenitorAbuelo = respuestasCapturadas.quien_hijo;
+                        const soloAbuelo = progenitorAbuelo.split(" ")[1];
+                        //console.log(soloAbuelo); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del bisabuelo/a es:${soloAbuelo}`);
+
+                        // (progenitorPadres)
+                        const progenitorPadres = respuestasCapturadas.quien_hijo_abu;
+                        const soloPadres = progenitorPadres.split(" ")[1];
+                        //console.log(soloPadres); // Imprime "Abuelo"
+                        console.log(`La respuesta quien es el hijo del abuelo/a es:${soloPadres}`); // Imprime "Padres"
+
+                        // Estados-Civiles------------------------------------------------------------------
+                        const estadoCivilBisabuelo = respuestasCapturadas.estado_civil_del_bisabuelo;
+                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(null, null, estadoCivilBisabuelo);
+                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
+
+                        const estadoCivilAbuelos = respuestasCapturadas.estado_civil_de_los_abuelos;
+                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(estadoCivilAbuelos, null, null);
+                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+
+                        const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
+                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
+                        console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
+
+                        // ANEXO I
+                        encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_12</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
+                            <h3 class="text-center">ANEXO I</h3><br>
+                            <div>
+                            <ol id="requisitos" class="text-left">
+                            <li>Anexo I, debidamente cumplimentado y firmado (Original y Copia).</li>
+                            <li>Hoja de declaración de datos, debidamente cumplimentada y firmada.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
+                            <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
+                            </li>
+                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
+                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            </li>
+                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li>Certificación de defunción de su ${soloAbuelo} </li>
+                            <li>Certificación de defunción de su ${soloPadres} </li>
+                            <li>Original y copia del carnet de identidad del interesado/a.</li>
+                            </ol></div><br>`;
+                        // FIN BISNIETO_BISABUELA 12-------
                     }
-                }, 5000); // Espera 5 segundos para simular la comprobación del método de pago
-            } else {
-                console.log("Debe introducir Nro. Transacción Correcto.");
-                encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe introducir Nro. Transacción Correcto.</p>`;
-            }
+
+                    else {
+                        console.log("El usuario NO es elegible para la ciudadanía española");
+                        encuestaDiv.innerHTML = `<h2>Resultado</h2><p>No eres elegible para solicitar la ciudadanía española por la leyes vigentes.</p>`;
+                    }
+                } else {
+                    console.log("El método de pago no fue aprobado.");
+                    encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Lo sentimos, su Nro. Transacción no es correcto. Por favor, inténtelo de nuevo.</p>`;
+                }
+            }, 5000); // Espera 5 segundos para simular la comprobación del método de pago
         } else {
-            console.log("Debe aceptar las condiciones para ver el resultado.");
-            encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Debe aceptar las condiciones para ver el resultado.</p>`;
+            console.log("Debe introducir Nro. Transacción Correcto.");
+            encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe introducir Nro. Transacción Correcto.</p>`;
         }
+    } else {
+        console.log("Debe aceptar las condiciones para ver el resultado.");
+        encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Debe aceptar las condiciones para ver el resultado.</p>`;
+        //}
     }
 }
 
+// Define una expresión regular que verifique si el valor ingresado por el usuario tiene el formato de un correo electrónico válido
+const regexEmail = /\S+@\S+\.\S+/;
+
+// Define una función que se ejecute cuando el usuario haga clic en "Aceptar" en el cuadro de diálogo emergente
+function aceptarDialogo() {
+  // Obtiene el valor ingresado por el usuario
+  const email = prompt("Ingresa tu correo electrónico:");
+
+  // Verifica si el valor ingresado es un correo electrónico válido
+  if (regexEmail.test(email)) {
+    // Oculta el cuadro de diálogo emergente
+    //document.querySelector(".cuadro-dialogo").style.display = "none";
+  } else {
+    // Si el valor ingresado no es un correo electrónico válido, muestra un mensaje de error y vuelve a pedir el correo electrónico
+    alert("Por favor ingresa un correo electrónico válido.");
+    aceptarDialogo();
+  }
+}
+
+// Inicia la función para mostrar el cuadro de diálogo emergente
+aceptarDialogo();
+
+// const correosElectronico = [];
+
+// function guardarCorreoValor(valor) {
+//     respuestas.correoElectronico = valor;
+//     correosElectronico.push(valor); // agregamos el correo al array
+//     console.log(`El correo electrónico ingresado es: ${valor}`);
+// }
+
+// const correoElectronico = prompt("Por favor, ingrese su correo electrónico:");
+// guardarCorreoValor(correoElectronico);
+
+// // aquí puedes utilizar el array correosElectronico para mostrar una lista de los correos ingresados
+// console.log(correosElectronico);
 
 function refrescarEncuesta() {
+    const correoElectronico = prompt("Por favor, ingrese su correo electrónico:");
     claveActual = "bienvenida";
     mostrarPregunta();
     document.getElementById("siguiente").style.display = "inline";
     document.getElementById("atras").style.display = "inline";
     document.getElementById("resultado").style.display = "none";
+    // aquí puedes utilizar el valor de correoElectronico como lo necesites
 }
 
 mostrarPregunta();
