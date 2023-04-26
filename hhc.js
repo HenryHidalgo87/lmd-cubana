@@ -21,7 +21,7 @@ const preguntas = {
         siguiente: {
             "Es mi bisabuelo": "renuncia_ciudadania",
             "Es mi bisabuela": "se_casa",
-            "Abuelo": "estado_fisico",
+            "Abuelo": "renuncia_ciudadania",
             "Abuela": "estado_fisico",
             "Padre": "estado_fisico_mp",
             "Madre": "estado_fisico_mp"
@@ -34,12 +34,12 @@ const preguntas = {
         opciones: ["Sí", "No"],
         siguiente: {
             "Sí": "antes_despues",
-            "No": "quien_hijo"
+            "No": "estado_civil_del_bisabuelo"
         },
         anterior: "parentesco"
     },
     antes_despues: {
-        pregunta: "¿Antes de nacer su hijo/a?",
+        pregunta: "¿Antes de nacer sus hijos?",
         opciones: ["Sí", "No"],
         siguiente: {
             "Sí": "estado_civil_del_bisabuelo",
@@ -75,7 +75,7 @@ const preguntas = {
         anterior: ["antes_despues"]
     },
     quien_hijo: {
-        pregunta: "¿Quién es el hijo/a de su bisabuelo/a?",
+        pregunta: "¿Quién es hijo de su bisabuelo/a?",
         opciones: ["Mi abuelo", "Mi abuela"],
         siguiente: {
             "Mi abuelo": "estado_fisico",
@@ -94,7 +94,7 @@ const preguntas = {
     },
     //----EStado Civil al momento de nacer sus hijos:
     estado_civil_de_los_abuelos: {
-        pregunta: "Que estado civil tenía el abuelo/a al momento del nacimiento de su hijo/a:",
+        pregunta: "Que estado civil tenía el abuelo/a al momento del nacimiento de sus hijos:",
         opciones: ["Progenitores casados por el consulado",
             "Progenitores casados por el Registro Civil Cubano",
             "Progenitores casados pero actualmente uno de ellos fallecido",
@@ -120,7 +120,7 @@ const preguntas = {
         anterior: ["estado_fisico"]
     },
     quien_hijo_abu: {
-        pregunta: "¿Quién es el hijo/a de mi abuelo/a?",
+        pregunta: "¿Quién es hijo de mi abuelo/a?",
         opciones: ["Mi padre", "Mi madre"],
         siguiente: {
             "Mi padre": "estado_fisico_mp",
@@ -169,7 +169,7 @@ const preguntas = {
         pregunta: "Su Bisabuela se caso con:",
         opciones: ["Español", "Cubano"],
         siguiente: {
-            "Español": "quien_hijo",
+            "Español": "estado_civil_del_bisabuelo",
             "Cubano": "antes_despues_hijos_bisabuela"
         },
         anterior: ["parentesco"]
@@ -182,7 +182,9 @@ const preguntas = {
             "No": "estado_civil_del_bisabuelo"
         },
         anterior: ["se_casa"]
-    }
+    },
+    //----ABUELO--------------------------------------------------------------------------------------------
+
 };
 
 let claveActual = "bienvenida";
@@ -229,13 +231,57 @@ function siguientePregunta() {
     } else if (preguntas.hasOwnProperty(claveSiguiente)) {
         claveActual = claveSiguiente;
 
-        // Actualizar la pregunta actual con la información del hijo o hija
+        // Actualizar la pregunta actual Esatdo Civil Bisabuelo
         if (claveActual === "estado_civil_del_bisabuelo") {
-            preguntas[claveActual].pregunta = "Que estado civil tenía el bisabuelo/a al momento del nacimiento de su hijo/a:";
             if (respuestas["parentesco"] === "Es mi bisabuelo") {
-                preguntas[claveActual].pregunta = "Que estado civil tenía el bisabuelo al momento del nacimiento de su hijo/a:";
+              preguntas[claveActual].pregunta = "Que estado civil tenía el bisabuelo al momento del nacimiento de sus hijos:";
+            } else if (respuestas["parentesco"] === "Es mi bisabuela") {
+              preguntas[claveActual].pregunta = "Que estado civil tenía la bisabuela al momento del nacimiento de sus hijos:";
+            } //else {
+              //preguntas[claveActual].pregunta = "Que estado civil tenía el/la " + parentesco + " al momento de su nacimiento:";
+            //}
+        }
+        // Actualizar la pregunta actual quien hijo.
+        if (claveActual === "quien_hijo") {
+            if (respuestas["parentesco"] === "Es mi bisabuelo") {
+                preguntas[claveActual].pregunta = "¿Quién es hijo de su bisabuelo?";
+              } else if (respuestas["parentesco"] === "Es mi bisabuela") {
+                preguntas[claveActual].pregunta = "¿Quién el hijo de su bisabuela?";
             }
         }
+        // Actualizar la pregunta actual estado fisico.
+        if (claveActual === "estado_fisico") {
+            if (respuestas["quien_hijo"] === "Mi abuelo") {
+              preguntas[claveActual].pregunta = "Qué estado físico tiene su abuelo en la actualidad:";
+            } else if (respuestas["quien_hijo"] === "Mi abuela") {
+              preguntas[claveActual].pregunta = "Qué estado físico tiene su abuela en la actualidad:";
+            }
+        }
+        // Actualizar la pregunta actual Esatdo Civil de los abuelos.
+        if  (claveActual === "estado_civil_de_los_abuelos") {
+            if (respuestas["quien_hijo"] === "Mi abuelo") {
+              preguntas[claveActual].pregunta = "Que estado civil tenía el abuelo al momento del nacimiento de sus hijos:";
+            } else if (respuestas["quien_hijo"] === "Mi abuela") {
+              preguntas[claveActual].pregunta = "Que estado civil tenía la abuela al momento del nacimiento de sus hijos:";
+            }
+        }
+         // Actualizar la pregunta actual quien hijo de abuelos
+         if (claveActual === "quien_hijo_abu") {
+            if (respuestas["quien_hijo"] === "Mi abuelo") {
+                preguntas[claveActual].pregunta = "¿Quién es hijo de su abuelo?";
+              } else if (respuestas["quien_hijo"] === "Mi abuela") {
+                preguntas[claveActual].pregunta = "¿Quién es hijo de su abuela?";
+            }
+        }
+        // Actualizar la pregunta actual estado fisico.
+        if (claveActual === "estado_fisico_mp") {
+            if (respuestas["quien_hijo_abu"] === "Mi padre") {
+              preguntas[claveActual].pregunta = "Qué estado físico tiene su padre en la actualidad:";
+            } else if (respuestas["quien_hijo_abu"] === "Mi madre") {
+              preguntas[claveActual].pregunta = "Qué estado físico tiene su madre en la actualidad:";
+            }
+        }
+        
 
         mostrarPregunta();
     } else {
@@ -462,6 +508,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 1----------------
+                        // INICIO BISNIETO 2-------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "Sí" &&
                         respuestas.antes_despues === "Sí" &&
@@ -518,6 +565,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 2----------------
+                        // INICIO BISNIETO 3 ------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "Sí" &&
                         respuestas.antes_despues === "Sí" &&
@@ -575,6 +623,7 @@ function mostrarResultado(respuestas) {
                             <div>`;
 
                         // FIN BISNIETO 3----------------
+                        // INICIO BISNIETO 5 ------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "Sí" &&
                         respuestas.antes_despues === "No" &&
@@ -629,10 +678,11 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
-                            <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
-                            <p>2-	Certifico de registro de ciudadanía de su bisabuelo.</p>
+                            <p>*- Certifico de registro de extranjero de su bisabuelo.</p>
+                            <p>*- Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
@@ -652,6 +702,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 5----------------
+                        // INICIO BISNIET 6 -------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "Sí" &&
                         respuestas.antes_despues === "No" &&
@@ -705,6 +756,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -716,6 +768,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 6----------------
+                        // INICIO BISNIETO 7 ------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "Sí" &&
                         respuestas.antes_despues === "No" &&
@@ -770,6 +823,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -794,6 +848,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 7----------------
+                        // INICIO BISNIETO 8 ------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "Sí" &&
                         respuestas.antes_despues === "No" &&
@@ -847,6 +902,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -858,6 +914,7 @@ function mostrarResultado(respuestas) {
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
                         // FIN BISNIETO 8----------------
+                        // INICIO NISNIETO 9 ------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "No" &&
                         (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
@@ -898,7 +955,7 @@ function mostrarResultado(respuestas) {
                         const estadoCivilPadres = respuestasCapturadas.estado_civil_de_los_padres;
                         const respuestaPadres = obtenerRespuestaPorEstadoCivil(null, estadoCivilPadres, null);
                         console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
-
+                            //ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_9</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
                             <strong>Nota:</strong> si presentas por Anexo I estos son los documentos relacionados:<br> 
@@ -910,6 +967,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -933,6 +991,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 9----------------
+                        // INICIO BISNIETO 10 -----------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "No" &&
                         (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
@@ -940,7 +999,7 @@ function mostrarResultado(respuestas) {
                         (respuestas.quien_hijo_abu.includes("Mi padre") || respuestas.quien_hijo_abu.includes("Mi madre")) &&
                         respuestas.estado_fisico_mp === "Muerto") {
                         elegible = true;
-                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o Anexo III (Bisnieto_10)");
+                        console.log("El usuario es elegible para la ciudadanía española por Anexo I o (Bisnieto_10)");
 
                         // -----------------------Progenitores -------------------------------------------------------------------
                         // (progenitorBisabuelo)
@@ -985,6 +1044,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -995,6 +1055,7 @@ function mostrarResultado(respuestas) {
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
                         // FIN BISNIETO 10----------------
+                        // INICIO BISNIETO 11 ------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "No" &&
                         (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
@@ -1048,6 +1109,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1072,6 +1134,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 11----------------
+                        // INICIO BISNIETO 12-------------
                     } else if (respuestas.parentesco === "Es mi bisabuelo" &&
                         respuestas.renuncia_ciudadania === "No" &&
                         (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
@@ -1124,6 +1187,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1194,6 +1258,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         //1----------------BISABUELA--1--------------
+                        // INICIO BISNIETO BISABUELA 2 --------------
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                         respuestas.se_casa === "Cubano" &&
                         respuestas.antes_despues_hijos_bisabuela === "Sí" &&
@@ -1249,6 +1314,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         //--FIN BISNIETO_BISABUELA_2-----------
+                        // INICIO BISNIETO BISABUELA 3 --------
 
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                         respuestas.se_casa === "Cubano" &&
@@ -1306,6 +1372,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         //--FIN BISNIETO_BISABUELA_3-----------
+                        // INICIO BISNIETO BISABUELA 5 --------
 
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                         respuestas.se_casa === "Cubano" &&
@@ -1361,6 +1428,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1385,6 +1453,7 @@ function mostrarResultado(respuestas) {
                             <div>`;
 
                         //--FIN BISNIETO_BISABUELA_5-----------
+                        // INICIO BISNIETO BISABUELA 6---------
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                         respuestas.se_casa === "Cubano" &&
                         respuestas.antes_despues_hijos_bisabuela === "No" &&
@@ -1438,6 +1507,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1449,6 +1519,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO_BISABUELA 6-------------
+                        // INICIO BISNIETO BISABUELA 7 ---------
 
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                         respuestas.se_casa === "Cubano" &&
@@ -1504,6 +1575,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1528,6 +1600,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 7----------------
+                        // INICIO BISNIETO BISABUELA 8 --
 
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                         respuestas.se_casa === "Cubano" &&
@@ -1582,6 +1655,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1593,6 +1667,7 @@ function mostrarResultado(respuestas) {
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
                         // FIN BISNIETO BISABUELA_8------------
+                        // INICIO BISNIETO BISABUELA 9 --------
 
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                         respuestas.se_casa === "Español" &&
@@ -1646,6 +1721,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1669,6 +1745,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO 9----------------
+                        // INICIO BISNIETO BISABUELA 10 --
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                     respuestas.se_casa === "Español" &&
                     (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
@@ -1721,6 +1798,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1731,6 +1809,7 @@ function mostrarResultado(respuestas) {
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
                         // FIN BISNIETO BISABUELA 10----------
+                        // INICIO BISNIETO BISABUELA 11 ------
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                     respuestas.se_casa === "Español" &&
                     (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
@@ -1784,6 +1863,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
@@ -1808,6 +1888,7 @@ function mostrarResultado(respuestas) {
                             </ol>
                             <div>`;
                         // FIN BISNIETO_BISABUELA_11----------
+                        // INICIO BISNIETO BISABUELA 12 ------
                     } else if (respuestas.parentesco === "Es mi bisabuela" &&
                     respuestas.se_casa === "Español" &&
                     (respuestas.quien_hijo.includes("Mi abuelo") || respuestas.quien_hijo.includes("Mi abuela")) &&
@@ -1860,6 +1941,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
+                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
                             <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
