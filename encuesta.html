@@ -54,7 +54,7 @@
 
 </head>
 
-<body>
+<body id="contenido-html">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3PB77S" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -122,6 +122,51 @@
                 </div>
             </div>
         </div>
+
+        <!-- REGISTRO -->
+        <section>
+            <div class="container" id="registro">
+                <div id="contenedor-modal">
+
+                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        Launch static backdrop modal
+                    </button> -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Registro</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                        style="display: none;"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- https://formspree.io/f/mzbqyllo -->
+                                    <form action="" method="POST" enctype="multipart/form-data" target="_blank">
+                                        <label>
+                                            Su email:
+                                            <input type="email" name="email">
+                                        </label>
+                                        <label>
+                                            Su nombre:
+                                            <input type="name" name="nombre">
+                                        </label>
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary"
+                                                data-bs-dismiss="modal">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="container card">
             <div id="encuesta" class="text-center p-2">
                 <!-- Aquí se mostrarán las preguntas y opciones de respuesta -->
@@ -132,19 +177,14 @@
             <div class="d-grid gap-2 d-md-block text-center p-2">
                 <!-- contenido del elemento -->
                 <button class="btn btn-primary" id="atras" onclick="retrocederPregunta()">Atrás</button>
+                <button class="btn btn-success" id="iniciar" type="button" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" onclick="restablecerBotones()">Iniciar</button>
                 <button class="btn btn-success" id="siguiente" onclick="siguientePregunta()">Siguiente</button>
-                <button class="btn btn-primary" id="resultado" onclick="mostrarResultado()"
-                    style="display: none;">Mostrar resultado</button>
+                <!-- <button class="btn btn-primary" id="resultado" onclick="mostrarResultado()"
+                    style="display: none;">Mostrar resultado</button> -->
                 <button class="btn btn-primary" id="refrescar" onclick="refrescarEncuesta()">Refrescar</button>
             </div>
-
-            <!-- <div class="form-check form-switch text-center">
-                <input class="form-check-input text-center" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label text-center" for="flexSwitchCheckDefault">Default switch checkbox
-                    input</label>
-            </div> -->
         </div>
-        <!-- Modal -->
 
         <div class="text-center p-5">
             <div class="spinner-border" role="status" hidden>
