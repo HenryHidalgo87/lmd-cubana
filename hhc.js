@@ -5,17 +5,23 @@ function ocultarBotones() {
             boton.style.display = 'none';
         }
     });
+    setTimeout(() => {
+        botones.forEach(boton => {
+            if (boton.id === 'atras' || boton.id === 'siguiente' || boton.id === 'resultado' || boton.id === 'refrescar') {
+                boton.style.display = 'inline';
+            }
+        });
+    }, 12000);
 }
 
 function restablecerBotones() {
     const botones = document.querySelectorAll('.d-grid button');
     botones.forEach(boton => {
-        if (boton.id !== 'iniciar') {
-            boton.style.display = 'inline';
+        if (boton.id === 'iniciar') {
+            boton.style.display = 'none';
         }
     });
 }
-
 
 // Llamar a la función ocultarBotones() al inicio para ocultar los botones
 ocultarBotones();
@@ -28,14 +34,6 @@ const preguntas = {
         siguiente: { Sí: 'parentesco', No: null },
         anterior: [null],
     },
-    // correo_electronico: {
-    //     pregunta: "Por favor, introduce tu dirección de correo electrónico:",
-    //     opciones: [],
-    //     siguiente: {
-    //         "correo electrónico": "parentesco"
-    //     },
-    //     anterior: "bienvenida"
-    // },
     parentesco: {
         //------PARENTESCO----------------------------------------------------------------------------------
         pregunta: '¿Cuál es tu grado de parentesco con el ciudadano español?',
@@ -264,6 +262,7 @@ const encuestaDiv = document.getElementById('encuesta');
 // const formulario = document.getElementById('formulario');
 //const registro = document.getElementById('registro');
 
+
 function mostrarPregunta() {
     const preguntaActual = preguntas[claveActual];
     if (preguntaActual && preguntaActual.opciones && preguntaActual.opciones.length > 0) {
@@ -405,6 +404,28 @@ function siguientePregunta() {
     }
 }
 
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const form = document.getElementById('emailforms');
+//     const emailInput = document.getElementById('email');
+//     const nameInput = document.getElementById('name');
+//     const userList = [];
+
+//     form.addEventListener('submit', (event) => {
+//         event.preventDefault();
+
+//         const email = emailInput.value;
+//         const name = nameInput.value;
+
+//         const user = { email, name };
+//         userList.push(user);
+
+//         console.log(`El usuario ingresado es: ${user.email} - ${user.name}`);
+//         console.log(`Lista de usuarios:`);
+//         console.log(userList);
+//     });
+// });
+
 function obtenerRespuestaPorEstadoCivil(
     estadoCivilAbuelos,
     estadoCivilPadres,
@@ -416,18 +437,18 @@ function obtenerRespuestaPorEstadoCivil(
         switch (estadoCivilBisabuelo) {
             case 'Progenitores casados por el consulado':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    'Debes presentar Certificado español de matrimonio.<br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
                 break;
             case 'Progenitores casados por el Registro Civil Cubano':
                 respuesta += 'Debes presentar el certificado de matrimonio cubano';
                 break;
-            case 'Progenitores casados pero actualmente uno de ellos fallecido':
+            case 'Progenitores casados pero actualmente uno de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio, 2- certificado de viudez del cónyuge viudo(a) o 3- certificado de matrimonio + certificado de defunción, todo legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio o 2- certificado de matrimonio con nota del divorcio,  todo legalizado por el MINREX.';
                 break;
             case 'Nació de padres aun solteros':
                 respuesta =
@@ -435,19 +456,19 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Nació de padres solteros pero uno/a de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
+                    'Debes presentar certificación de Fe de soltería y Certificado de defunción, legalizado por el MINREX..';
                 break;
             case 'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados':
                 respuesta =
-                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar 1- certificado de matrimonio con notas del estado conyugal de estos al casarse o 2- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas':
                 respuesta =
-                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar: 1- certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o 2- certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio':
                 respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+                    'Debes presentar certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas':
                 respuesta =
@@ -464,18 +485,18 @@ function obtenerRespuestaPorEstadoCivil(
         switch (estadoCivilAbuelos) {
             case 'Progenitores casados por el consulado':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    'Debes presentar Certificado español de matrimonio.<br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
                 break;
             case 'Progenitores casados por el Registro Civil Cubano':
                 respuesta += 'Debes presentar el certificado de matrimonio cubano';
                 break;
-            case 'Progenitores casados pero actualmente uno de ellos fallecido':
+            case 'Progenitores casados pero actualmente uno de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio, 2- certificado de viudez del cónyuge viudo(a) o 3- certificado de matrimonio + certificado de defunción, todo legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio o 2- certificado de matrimonio con nota del divorcio,  todo legalizado por el MINREX.';
                 break;
             case 'Nació de padres aun solteros':
                 respuesta =
@@ -483,27 +504,27 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Nació de padres solteros pero uno/a de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
+                    'Debes presentar certificación de Fe de soltería y Certificado de defunción, legalizado por el MINREX..';
                 break;
             case 'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados':
                 respuesta =
-                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar 1- certificado de matrimonio con notas del estado conyugal de estos al casarse o 2- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas':
                 respuesta =
-                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar: 1- certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o 2- certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio':
                 respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+                    'Debes presentar certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas':
                 respuesta =
                     'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
                 break;
             default:
-                respuesta +=
-                    'Lo siento, no se reconoce el estado civil de los abuelos que has introducido.';
+                respuesta =
+                    'Lo siento, no se reconoce el estado civil del bisabuelo que has introducido.';
                 break;
         }
     }
@@ -512,18 +533,18 @@ function obtenerRespuestaPorEstadoCivil(
         switch (estadoCivilPadres) {
             case 'Progenitores casados por el consulado':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    'Debes presentar Certificado español de matrimonio.<br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
                 break;
             case 'Progenitores casados por el Registro Civil Cubano':
                 respuesta += 'Debes presentar el certificado de matrimonio cubano';
                 break;
-            case 'Progenitores casados pero actualmente uno de ellos fallecido':
+            case 'Progenitores casados pero actualmente uno de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio, 2- certificado de viudez del cónyuge viudo(a) o 3- certificado de matrimonio + certificado de defunción, todo legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio o 2- certificado de matrimonio con nota del divorcio,  todo legalizado por el MINREX.';
                 break;
             case 'Nació de padres aun solteros':
                 respuesta =
@@ -531,27 +552,27 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Nació de padres solteros pero uno/a de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
+                    'Debes presentar certificación de Fe de soltería y Certificado de defunción, legalizado por el MINREX..';
                 break;
             case 'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados':
                 respuesta =
-                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar 1- certificado de matrimonio con notas del estado conyugal de estos al casarse o 2- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas':
                 respuesta =
-                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar: 1- certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o 2- certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio':
                 respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+                    'Debes presentar certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas':
                 respuesta =
                     'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
                 break;
             default:
-                respuesta +=
-                    'Lo siento, no se reconoce el estado civil de los padres que has introducido.';
+                respuesta =
+                    'Lo siento, no se reconoce el estado civil del bisabuelo que has introducido.';
                 break;
         }
     }
@@ -3642,16 +3663,8 @@ function retrocederPregunta() {
 
 
 function refrescarEncuesta() {
-    claveActual = 'bienvenida';
-    mostrarPregunta();
-    document.getElementById('siguiente').style.display = 'inline';
-    document.getElementById('atras').style.display = 'inline';
-    // aquí puedes utilizar el valor de correoElectronico como lo necesites
+    location.reload();
+
 }
-
-// REGISTRO
-
-
-
 
 mostrarPregunta();

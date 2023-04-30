@@ -44,7 +44,8 @@
         })(window, document, 'script', 'dataLayer', 'GTM-M3PB77S');</script>
     <!-- End Google Tag Manager -->
     <!--SCROLLREVEAL-->
-    <script src="./js/scrollreveal.js"></script>
+    <!-- <script src="./js/scrollreveal.js"></script> -->
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 
     <!-- Stylesheets and other resources -->
     <link href="./css/main.css" rel="stylesheet" />
@@ -143,14 +144,16 @@
                                 </div>
                                 <div class="modal-body">
                                     <!-- https://formspree.io/f/mzbqyllo -->
-                                    <form action="" method="POST" enctype="multipart/form-data" target="_blank">
-                                        <label>
+                                    <form action="https://formspree.io/f/mzbqyllo" method="POST"
+                                        enctype="multipart/form-data" target="_blank"
+                                        onsubmit="return validarFormulario()">
+                                        <label class="p-2">
                                             Su email:
-                                            <input type="email" name="email">
+                                            <input type="email" name="email" class="form-control" required>
                                         </label>
-                                        <label>
+                                        <label class="p-2">
                                             Su nombre:
-                                            <input type="name" name="nombre">
+                                            <input type="text" name="nombre" class="form-control" required>
                                         </label>
 
                                         <div class="modal-footer">
@@ -158,6 +161,30 @@
                                                 data-bs-dismiss="modal">Enviar</button>
                                         </div>
                                     </form>
+
+                                    <script>
+                                        function validarFormulario() {
+                                            console.log('La función validarFormulario() se está ejecutando');
+
+                                            var email = document.getElementsByName('email')[0].value;
+                                            var nombre = document.getElementsByName('nombre')[0].value;
+
+                                            // Verificar si el campo de correo electrónico está vacío o no tiene el formato correcto
+                                            if (email.trim() === '' || !/^\S+@\S+\.\S+$/.test(email)) {
+                                                alert('Por favor, ingrese un correo electrónico válido');
+                                                return false;
+                                            }
+
+                                            // Verificar si el campo de nombre está vacío
+                                            if (nombre.trim() === '') {
+                                                alert('Por favor, ingrese su nombre');
+                                                return false;
+                                            }
+
+                                            // Si se pasan todas las validaciones, enviar el formulario
+                                            return true;
+                                        }
+                                    </script>
                                 </div>
 
                             </div>
