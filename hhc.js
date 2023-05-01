@@ -11,7 +11,7 @@ function ocultarBotones() {
                 boton.style.display = 'inline';
             }
         });
-    }, 12000);
+    }, 10000);
 }
 
 function restablecerBotones() {
@@ -163,39 +163,91 @@ const preguntas = {
         pregunta: '¿Qué estado físico tiene en la actualidad?',
         opciones: ['Vivo', 'Muerto'],
         siguiente: {
-            Vivo: 'estado_civil_de_los_padres',
-            Muerto: 'estado_civil_de_los_padres',
+            Vivo: 'estado_civil_padre',
+            Muerto: 'estado_civil_padre',
         },
         anterior: ['quien_hijo_abu'],
     },
 
-    estado_civil_de_los_padres: {
-        pregunta: 'Que estado civil tenían tus padres al momento de tu nacimiento:',
+    estado_civil_padre: {
+        pregunta: '¿Qué estado civil tenía tu padre al momento de tu nacimiento?',
         opciones: [
-            'Progenitores casados por el consulado',
-            'Progenitores casados por el Registro Civil Cubano',
-            'Progenitores casados pero actualmente uno de ellos fallecido',
-            'Progenitores casados pero actualmente son divorciados',
-            'Nació de padres aun solteros',
-            'Nació de padres solteros pero uno/a de ellos ha fallecido',
-            'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados',
-            'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas',
-            'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio',
-            'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas',
+            'casado por el consulado con mi madre',
+            'casado por el consulado con otra persona',
+            'casado por el Registro Civil Cubano con mi madre',
+            'casado por el Registro Civil Cubano con otra persona',
+            'casado pero actualmente mi madre es fallecida',
+            'casado con mi madre pero actualmente está divorciado',
+            'casado con otra persona pero actualmente está divorciado',
+            'soltero',
+            'soltero pero actualmente es fallecido',
+            'soltero pero actualmente esta casado con mi madre',
+            'soltero pero actualmente esta casado con otra persona',
+            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona',
+            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior',
+            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona',
+            'Viudo',
+            'No lo sé',
         ],
         siguiente: {
-            'Progenitores casados por el consulado': null,
-            'Progenitores casados por el Registro Civil Cubano': null,
-            'Progenitores casados pero actualmente uno de ellos fallecido': null,
-            'Progenitores casados pero actualmente son divorciados': null,
-            'Nació de padres aun solteros': null,
-            'Nació de padres solteros pero uno/a de ellos ha fallecido': null,
-            'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados': null,
-            'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas': null,
-            'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio': null,
-            'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas': null,
+            'casado por el consulado con mi madre': 'estado_civil_madre',
+            'casado por el consulado con otra persona': 'estado_civil_madre',
+            'casado por el Registro Civil Cubano con mi madre': 'estado_civil_madre',
+            'casado por el Registro Civil Cubano con otra persona': 'estado_civil_madre',
+            'casado pero actualmente mi madre es fallecida': 'estado_civil_madre',
+            'casado con mi madre pero actualmente está divorciado': 'estado_civil_madre',
+            'casado con otra persona pero actualmente está divorciado': 'estado_civil_madre',
+            'soltero': 'estado_civil_madre',
+            'soltero pero actualmente es fallecido': 'estado_civil_madre',
+            'soltero pero actualmente esta casado con mi madre': 'estado_civil_madre',
+            'soltero pero actualmente esta casado con otra persona': 'estado_civil_madre',
+            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona': 'estado_civil_madre',
+            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior': 'estado_civil_madre',
+            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona': 'estado_civil_madre',
+            'Viudo': 'estado_civil_madre',
+            'No lo sé': 'estado_civil_madre',
         },
-        anterior: ['estado_fisico_mp'],
+        anterior: ['estado_fisico_mp']
+    },
+    estado_civil_madre: {
+        pregunta: '¿Qué estado civil tenía tu madre al momento de tu nacimiento?',
+        opciones: [
+            'casado por el consulado con mi madre',
+            'casado por el consulado con otra persona',
+            'casado por el Registro Civil Cubano con mi madre',
+            'casado por el Registro Civil Cubano con otra persona',
+            'casado pero actualmente mi madre es fallecida',
+            'casado con mi madre pero actualmente está divorciado',
+            'casado con otra persona pero actualmente está divorciado',
+            'soltero',
+            'soltero pero actualmente es fallecido',
+            'soltero pero actualmente esta casado con mi madre',
+            'soltero pero actualmente esta casado con otra persona',
+            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona',
+            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior',
+            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona',
+            'Viudo',
+            'No lo sé',
+        ],
+        siguiente: {
+            'casado por el consulado con mi madre': null,
+            'casado por el consulado con otra persona': null,
+            'casado por el Registro Civil Cubano con mi madre': null,
+            'casado por el Registro Civil Cubano con otra persona': null,
+            'casado pero actualmente mi madre es fallecida': null,
+            'casado con mi madre pero actualmente está divorciado': null,
+            'casado con otra persona pero actualmente está divorciado': null,
+            'soltero': null,
+            'soltero pero actualmente es fallecido': null,
+            'soltero pero actualmente esta casado con mi madre': null,
+            'soltero pero actualmente esta casado con otra persona': null,
+            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona': null,
+            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior': null,
+            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona': null,
+            'Viudo': null,
+            'No lo sé': null,
+        },
+        anterior: ['estado_fisico_mp']
     },
     //--------BISABUELA-------------------------------------------------------------------------------------
     se_casa: {
@@ -277,6 +329,7 @@ function mostrarPregunta() {
         console.error(`La pregunta actual (${claveActual}) no está definida correctamente en el objeto "preguntas".`);
     }
 }
+
 
 let respuestas = {}; // Define la variable "respuestas" antes de utilizarla
 
@@ -405,31 +458,11 @@ function siguientePregunta() {
 }
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const form = document.getElementById('emailforms');
-//     const emailInput = document.getElementById('email');
-//     const nameInput = document.getElementById('name');
-//     const userList = [];
-
-//     form.addEventListener('submit', (event) => {
-//         event.preventDefault();
-
-//         const email = emailInput.value;
-//         const name = nameInput.value;
-
-//         const user = { email, name };
-//         userList.push(user);
-
-//         console.log(`El usuario ingresado es: ${user.email} - ${user.name}`);
-//         console.log(`Lista de usuarios:`);
-//         console.log(userList);
-//     });
-// });
-
 function obtenerRespuestaPorEstadoCivil(
     estadoCivilAbuelos,
-    estadoCivilPadres,
-    estadoCivilBisabuelo
+    estadoCivilPadre,
+    estadoCivilBisabuelo,
+    estadoCivilMadre
 ) {
     let respuesta = '';
 
@@ -437,18 +470,18 @@ function obtenerRespuestaPorEstadoCivil(
         switch (estadoCivilBisabuelo) {
             case 'Progenitores casados por el consulado':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio.<br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
                 break;
             case 'Progenitores casados por el Registro Civil Cubano':
                 respuesta += 'Debes presentar el certificado de matrimonio cubano';
                 break;
-            case 'Progenitores casados pero actualmente uno de ellos ha fallecido':
+            case 'Progenitores casados pero actualmente uno de ellos fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio, 2- certificado de viudez del cónyuge viudo(a) o 3- certificado de matrimonio + certificado de defunción, todo legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
-                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio o 2- certificado de matrimonio con nota del divorcio,  todo legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
                 break;
             case 'Nació de padres aun solteros':
                 respuesta =
@@ -456,19 +489,19 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Nació de padres solteros pero uno/a de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar certificación de Fe de soltería y Certificado de defunción, legalizado por el MINREX..';
+                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
                 break;
             case 'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados':
                 respuesta =
-                    'Debes presentar 1- certificado de matrimonio con notas del estado conyugal de estos al casarse o 2- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas':
                 respuesta =
-                    'Debes presentar: 1- certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o 2- certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio':
                 respuesta =
-                    'Debes presentar certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas':
                 respuesta =
@@ -485,18 +518,18 @@ function obtenerRespuestaPorEstadoCivil(
         switch (estadoCivilAbuelos) {
             case 'Progenitores casados por el consulado':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio.<br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
                 break;
             case 'Progenitores casados por el Registro Civil Cubano':
                 respuesta += 'Debes presentar el certificado de matrimonio cubano';
                 break;
-            case 'Progenitores casados pero actualmente uno de ellos ha fallecido':
+            case 'Progenitores casados pero actualmente uno de ellos fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio, 2- certificado de viudez del cónyuge viudo(a) o 3- certificado de matrimonio + certificado de defunción, todo legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
-                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio o 2- certificado de matrimonio con nota del divorcio,  todo legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
                 break;
             case 'Nació de padres aun solteros':
                 respuesta =
@@ -504,75 +537,162 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Nació de padres solteros pero uno/a de ellos ha fallecido':
                 respuesta =
-                    'Debes presentar certificación de Fe de soltería y Certificado de defunción, legalizado por el MINREX..';
+                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
                 break;
             case 'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados':
                 respuesta =
-                    'Debes presentar 1- certificado de matrimonio con notas del estado conyugal de estos al casarse o 2- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas':
                 respuesta =
-                    'Debes presentar: 1- certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o 2- certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio':
                 respuesta =
-                    'Debes presentar certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
                 break;
             case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas':
                 respuesta =
                     'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
                 break;
             default:
-                respuesta =
-                    'Lo siento, no se reconoce el estado civil del bisabuelo que has introducido.';
+                respuesta +=
+                    'Lo siento, no se reconoce el estado civil de los abuelos que has introducido.';
                 break;
         }
     }
 
-    if (estadoCivilPadres) {
-        switch (estadoCivilPadres) {
-            case 'Progenitores casados por el consulado':
+    if (estadoCivilPadre) {
+        switch (estadoCivilPadre) {
+            case 'casado por el consulado con mi madre':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio.<br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
                 break;
-            case 'Progenitores casados por el Registro Civil Cubano':
+            case 'casado por el consulado con otra persona':
                 respuesta += 'Debes presentar el certificado de matrimonio cubano';
                 break;
-            case 'Progenitores casados pero actualmente uno de ellos ha fallecido':
+            case 'casado por el Registro Civil Cubano con mi madre':
                 respuesta =
-                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio, 2- certificado de viudez del cónyuge viudo(a) o 3- certificado de matrimonio + certificado de defunción, todo legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
                 break;
-            case 'Progenitores casados pero actualmente son divorciados':
+            case 'casado por el Registro Civil Cubano con otra persona':
                 respuesta =
-                    'Debes presentar una de estas variantes: 1- certificado de vigencia del matrimonio o 2- certificado de matrimonio con nota del divorcio,  todo legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
                 break;
-            case 'Nació de padres aun solteros':
+            case 'casado pero actualmente mi madre es fallecida':
                 respuesta =
                     'Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.';
                 break;
-            case 'Nació de padres solteros pero uno/a de ellos ha fallecido':
+            case 'casado con mi madre pero actualmente está divorciado':
                 respuesta =
-                    'Debes presentar certificación de Fe de soltería y Certificado de defunción, legalizado por el MINREX..';
+                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
                 break;
-            case 'Nació antes de que sus padres se casaran entre ellos y siguen actualmente casados':
+            case 'casado con otra persona pero actualmente está divorciado':
                 respuesta =
-                    'Debes presentar 1- certificado de matrimonio con notas del estado conyugal de estos al casarse o 2- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
-            case 'Nació antes de que sus padres se casaran y posteriormente se divorciaron y se volvieron a casar con terceras personas':
+            case 'soltero':
                 respuesta =
-                    'Debes presentar: 1- certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o 2- certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
                 break;
-            case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente sigue divorciado del primer matrimonio':
+            case 'soltero pero actualmente es fallecido':
                 respuesta =
-                    'Debes presentar certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
                 break;
-            case 'Nació de progenitor/a divorciado/a de otra persona y nunca se casaron sus padres biológicos entre sí y actualmente se volvieron a casar con terceras personas':
+            case 'soltero pero actualmente esta casado con mi madre':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'soltero pero actualmente esta casado con otra persona':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'Viudo':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'No lo sé':
                 respuesta =
                     'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
                 break;
             default:
+                respuesta +=
+                    'Lo siento, no se reconoce el estado civil de los padres que has introducido.';
+                break;
+        }
+    }
+    if (estadoCivilMadre) {
+        switch (estadoCivilMadre) {
+            case 'casado por el consulado con mi madre':
+                respuesta +=
+                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                break;
+            case 'casado por el consulado con otra persona':
+                respuesta += 'Debes presentar el certificado de matrimonio cubano';
+                break;
+            case 'casado por el Registro Civil Cubano con mi madre':
                 respuesta =
-                    'Lo siento, no se reconoce el estado civil del bisabuelo que has introducido.';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+                break;
+            case 'casado por el Registro Civil Cubano con otra persona':
+                respuesta =
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
+                break;
+            case 'casado pero actualmente mi madre es fallecida':
+                respuesta =
+                    'Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.';
+                break;
+            case 'casado con mi madre pero actualmente está divorciado':
+                respuesta =
+                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
+                break;
+            case 'casado con otra persona pero actualmente está divorciado':
+                respuesta =
+                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                break;
+            case 'soltero':
+                respuesta =
+                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                break;
+            case 'soltero pero actualmente es fallecido':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+                break;
+            case 'soltero pero actualmente esta casado con mi madre':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'soltero pero actualmente esta casado con otra persona':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'Viudo':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            case 'No lo sé':
+                respuesta =
+                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                break;
+            default:
+                respuesta +=
+                    'Lo siento, no se reconoce el estado civil de los padres que has introducido.';
                 break;
         }
     }
@@ -671,7 +791,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -680,16 +801,32 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
-                        // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
+                        // // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
+                        );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+                        console.log(
+                            `La respuesta para el estado civil del padre es: ${respuestaPadre}`
+                        );
+                        console.log(
+                            `La respuesta para el estado civil de la madre es: ${respuestaMadre}`
                         );
                         console.log(
                             `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
@@ -757,7 +894,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -766,19 +904,16 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
-                            null,
-                            estadoCivilPadres,
-                            null
+                        console.log(
+                            `La respuesta para el estado civil del padre es: ${respuestaPadre}`
                         );
                         console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                            `La respuesta para el estado civil de la madre es: ${respuestaMadre}`
                         );
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_2</h2><p><strong>Usted no es elegible para la ciudadanía española pero su ${soloAbuelo} si por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para que su ${soloAbuelo} pueda presentar su solicitud:</p>
@@ -837,34 +972,24 @@ function mostrarResultado(respuestas) {
                         ); // Imprime "Padres"
 
                         // Estados-Civiles------------------------------------------------------------------
-                        const estadoCivilBisabuelo =
-                            respuestasCapturadas.estado_civil_del_bisabuelo;
-                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
-                            null,
-                            null,
-                            estadoCivilBisabuelo
-                        );
-                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                        const estadoCivilAbuelos =
-                            respuestasCapturadas.estado_civil_de_los_abuelos;
-                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
-                            estadoCivilAbuelos,
-                            null,
-                            null
-                        );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
 
                         //--ANEXO III----------
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_3</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
@@ -929,7 +1054,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -938,20 +1064,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_5</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -1037,7 +1170,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -1046,20 +1180,26 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
 
                         // ANEXO I
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_6</h2><strong><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p></strong><br>
@@ -1132,7 +1272,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -1141,20 +1282,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_7</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -1241,7 +1389,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -1250,20 +1399,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_8</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -1335,7 +1491,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -1344,20 +1501,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_9</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
@@ -1441,7 +1606,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -1450,20 +1616,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I-Defuncion
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -1534,7 +1707,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -1543,20 +1717,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_11</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -1642,7 +1823,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -1651,20 +1833,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
 
                         // ANEXO I
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_12</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -1733,34 +1923,25 @@ function mostrarResultado(respuestas) {
                         ); // Imprime "Padres"
 
                         // Estados-Civiles------------------------------------------------------------------
-                        const estadoCivilBisabuelo =
-                            respuestasCapturadas.estado_civil_del_bisabuelo;
-                        const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
-                            null,
-                            null,
-                            estadoCivilBisabuelo
-                        );
-                        // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                        const estadoCivilAbuelos =
-                            respuestasCapturadas.estado_civil_de_los_abuelos;
-                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
-                            estadoCivilAbuelos,
-                            null,
-                            null
-                        );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         //--ANEXO III----------
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
@@ -1824,29 +2005,30 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                        const estadoCivilAbuelos =
-                            respuestasCapturadas.estado_civil_de_los_abuelos;
-                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
-                            estadoCivilAbuelos,
-                            null,
-                            null
-                        );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_2</h2><p><strong>Usted no es elegible para la ciudadanía española pero su ${soloAbuelo} si por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para que su ${soloAbuelo} pueda presentar su solicitud:</p>
                             <div class="text-left">
@@ -1909,29 +2091,30 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
-                        const estadoCivilAbuelos =
-                            respuestasCapturadas.estado_civil_de_los_abuelos;
-                        const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
-                            estadoCivilAbuelos,
-                            null,
-                            null
-                        );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
 
                         //--ANEXO III----------
                         encuestaDiv.innerHTML = `<h2>Bisnieto_Bisabuela_3</h2><p><strong>Eres elegible para solicitar la ciudadanía española por Anexo III después que su ${soloPadres} se presente por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p>
@@ -1995,7 +2178,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2004,20 +2188,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
 
                         // ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_5</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2104,7 +2296,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2113,20 +2306,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_6</h2><strong><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p></strong><br>
@@ -2199,7 +2399,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2208,20 +2409,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_7</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2308,7 +2516,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2317,20 +2526,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         // ANEXO I
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_8</h2><p><strong>Eres elegible para solicitar la ciudadanía española  solo por Anexo I.</strong></p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2402,7 +2618,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2411,20 +2628,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_9</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
                             <h3 class="text-center">ANEXO I</h3><br>
@@ -2508,7 +2732,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2517,20 +2742,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
 
                         // ANEXO I-Defuncion
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_10</h2><p>Eres elegible para solicitar la ciudadanía española solo por Anexo I.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2601,7 +2834,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2610,20 +2844,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
-                        console.log(
-                            `La respuesta para el estado civil de los padres es: ${respuestaPadres}`
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
                         );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
 
                         // ANEXO I y ANEXO III
                         encuestaDiv.innerHTML = `<h2>Resultado: Bisnieto_Bisabuela_11</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I o Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2709,7 +2951,8 @@ function mostrarResultado(respuestas) {
                         const respuestaBisabuelo = obtenerRespuestaPorEstadoCivil(
                             null,
                             null,
-                            estadoCivilBisabuelo
+                            estadoCivilBisabuelo,
+                            null
                         );
                         // console.log(`La respuesta para el estado civil del bisabuelo/a es: ${respuestaBisabuelo}`);
 
@@ -2718,17 +2961,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         // console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         // ANEXO I
@@ -2789,17 +3043,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_1: Abuelo</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2852,17 +3117,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_2: Abuelo</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2916,17 +3192,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_3: Abuelo</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -2980,17 +3267,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_4: Abuelo</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3044,17 +3342,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_5: Abuelo</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3107,17 +3416,27 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_6: Abuelo</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3171,17 +3490,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_1: Abuela</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3234,17 +3564,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_2: Abuela</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3298,17 +3639,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_3: Abuela</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3362,17 +3714,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_4: Abuela</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3426,17 +3789,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_5: Abuela</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3489,17 +3863,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Nieto_6: Abuela</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo I</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3545,17 +3930,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Hijo_1</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>
@@ -3598,17 +3994,28 @@ function mostrarResultado(respuestas) {
                         const respuestaAbuelos = obtenerRespuestaPorEstadoCivil(
                             estadoCivilAbuelos,
                             null,
+                            null,
                             null
                         );
                         //console.log(`La respuesta para el estado civil de los abuelos es: ${respuestaAbuelos}`);
 
-                        const estadoCivilPadres =
-                            respuestasCapturadas.estado_civil_de_los_padres;
-                        const respuestaPadres = obtenerRespuestaPorEstadoCivil(
+                        const estadoCivilPadre = respuestasCapturadas.estado_civil_padre;
+                        const estadoCivilMadre = respuestasCapturadas.estado_civil_madre;
+                        const respuestaPadre = obtenerRespuestaPorEstadoCivil(
                             null,
-                            estadoCivilPadres,
+                            estadoCivilPadre,
+                            null,
                             null
                         );
+                        const respuestaMadre = obtenerRespuestaPorEstadoCivil(
+                            null,
+                            null,
+                            null,
+                            estadoCivilMadre
+                        );
+                        const respuestaPadres = respuestaPadre + respuestaMadre;
+
+
                         //console.log(`La respuesta para el estado civil de los padres es: ${respuestaPadres}`);
 
                         encuestaDiv.innerHTML = `<h2>Resultado: Hijo_2-Madre o Padre</h2><p><strong>Eres elegible para solicitar la ciudadanía española  por Anexo III</strong>.</p><p>A continuación, te indicamos los documentos que necesitarás para presentar tu solicitud:</p><br>

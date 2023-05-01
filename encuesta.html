@@ -144,49 +144,61 @@
                                 </div>
                                 <div class="modal-body">
                                     <!-- https://formspree.io/f/mzbqyllo -->
-                                    <form action="https://formspree.io/f/mzbqyllo" method="POST"
-                                        enctype="multipart/form-data" target="_blank"
-                                        onsubmit="return validarFormulario()">
-                                        <label class="p-2">
+                                    <form action="" method="POST" enctype="multipart/form-data" target="_blank"
+                                        id="emailforms">
+                                        <label>
                                             Su email:
-                                            <input type="email" name="email" class="form-control" required>
+                                            <input type="email" name="email" id="email" required>
                                         </label>
-                                        <label class="p-2">
+                                        <label>
                                             Su nombre:
-                                            <input type="text" name="nombre" class="form-control" required>
+                                            <input type="text" name="nombre" id="name" required>
                                         </label>
 
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary"
-                                                data-bs-dismiss="modal">Enviar</button>
+                                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                                onclick="showConfirmation()">Enviar</button>
                                         </div>
                                     </form>
-
+                                    <div id="confirmation" style="display: none;">
+                                        Gracias por enviar su formulario, <span id="confirmation-name"></span> (<span
+                                            id="confirmation-email"></span>)!
+                                    </div>
                                     <script>
-                                        function validarFormulario() {
-                                            console.log('La función validarFormulario() se está ejecutando');
+                                        const form = document.getElementById("emailforms");
+                                        form.addEventListener("submit", function (event) {
+                                            event.preventDefault();
 
-                                            var email = document.getElementsByName('email')[0].value;
-                                            var nombre = document.getElementsByName('nombre')[0].value;
+                                            const token = "";
+                                            const chatId = "";
+                                            const name = document.getElementById("name").value;
+                                            const email = document.getElementById("email").value;
+                                            const message = `Nuevo mensaje de contacto:\nNombre: ${name}\nEmail: ${email}`;
 
-                                            // Verificar si el campo de correo electrónico está vacío o no tiene el formato correcto
-                                            if (email.trim() === '' || !/^\S+@\S+\.\S+$/.test(email)) {
-                                                alert('Por favor, ingrese un correo electrónico válido');
-                                                return false;
-                                            }
+                                            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
-                                            // Verificar si el campo de nombre está vacío
-                                            if (nombre.trim() === '') {
-                                                alert('Por favor, ingrese su nombre');
-                                                return false;
-                                            }
+                                            fetch(url)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log(data);
+                                                    showConfirmation();
+                                                })
+                                                .catch(error => console.error(error));
+                                        });
 
-                                            // Si se pasan todas las validaciones, enviar el formulario
-                                            return true;
+                                        function showConfirmation() {
+                                            const email = document.getElementById("email").value;
+                                            const name = document.getElementById("name").value;
+                                            const confirmation = document.getElementById("confirmation");
+                                            const confirmationName = document.getElementById("confirmation-name");
+                                            const confirmationEmail = document.getElementById("confirmation-email");
+                                            form.style.display = "none";
+                                            confirmation.style.display = "block";
+                                            confirmationName.textContent = name;
+                                            confirmationEmail.textContent = email;
                                         }
                                     </script>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -197,6 +209,7 @@
         <div class="container card">
             <div id="encuesta" class="text-center p-2">
                 <!-- Aquí se mostrarán las preguntas y opciones de respuesta -->
+
             </div>
             <div id="resultado">
                 <!-- Aquí se mostrarán las preguntas y opciones de respuesta -->
@@ -213,11 +226,13 @@
             </div>
         </div>
 
+
         <div class="text-center p-5">
             <div class="spinner-border" role="status" hidden>
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
+
 
         <!-- FOOTER -->
         <footer>
