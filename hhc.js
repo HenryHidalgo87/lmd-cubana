@@ -176,76 +176,88 @@ const preguntas = {
             'casado por el consulado con otra persona',
             'casado por el Registro Civil Cubano con mi madre',
             'casado por el Registro Civil Cubano con otra persona',
-            'casado pero actualmente mi madre es fallecida',
-            'casado con mi madre pero actualmente está divorciado',
-            'casado con otra persona pero actualmente está divorciado',
+            'casado con mi madre, pero actualmente mi madre es fallecida',
+            'casado con mi madre, pero actualmente ambos son fallecidos',
+            'casado con mi madre, pero actualmente está divorciado de ella',
+            'casado con otra persona, pero actualmente está divorciado',
             'soltero',
-            'soltero pero actualmente es fallecido',
-            'soltero pero actualmente esta casado con mi madre',
-            'soltero pero actualmente esta casado con otra persona',
-            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona',
-            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior',
-            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona',
+            'soltero, pero actualmente es fallecido',
+            'soltero, pero actualmente está casado con mi madre',
+            'soltero, pero actualmente está casado con otra persona',
+            'soltero, pero fue casado con mi madre posterior a mi nacimiento, se divorció y actualmente está casado con otra persona',
+            'viudo de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene matrimonio',
+            'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio',
+            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado del matrimonio anterior',
+            'divorciado de otra persona y nunca se casó con mi madre y actualmente está casado con una tercera persona',
+            'divorciado de otra persona, nunca se casó con mi madre y actualmente está divorciado con una tercera persona con la cual contrajo matrimonio',
             'Viudo',
-            'No lo sé',
         ],
         siguiente: {
             'casado por el consulado con mi madre': 'estado_civil_madre',
             'casado por el consulado con otra persona': 'estado_civil_madre',
             'casado por el Registro Civil Cubano con mi madre': 'estado_civil_madre',
             'casado por el Registro Civil Cubano con otra persona': 'estado_civil_madre',
-            'casado pero actualmente mi madre es fallecida': 'estado_civil_madre',
-            'casado con mi madre pero actualmente está divorciado': 'estado_civil_madre',
-            'casado con otra persona pero actualmente está divorciado': 'estado_civil_madre',
+            'casado con mi madre, pero actualmente mi madre es fallecida': 'estado_civil_madre',
+            'casado con mi madre, pero actualmente ambos son fallecidos': 'estado_civil_madre',
+            'casado con mi madre, pero actualmente está divorciado de ella': 'estado_civil_madre',
+            'casado con otra persona, pero actualmente está divorciado': 'estado_civil_madre',
             'soltero': 'estado_civil_madre',
-            'soltero pero actualmente es fallecido': 'estado_civil_madre',
-            'soltero pero actualmente esta casado con mi madre': 'estado_civil_madre',
-            'soltero pero actualmente esta casado con otra persona': 'estado_civil_madre',
-            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona': 'estado_civil_madre',
-            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior': 'estado_civil_madre',
-            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona': 'estado_civil_madre',
+            'soltero, pero actualmente es fallecido': 'estado_civil_madre',
+            'soltero, pero actualmente está casado con mi madre': 'estado_civil_madre',
+            'soltero, pero actualmente está casado con otra persona': 'estado_civil_madre',
+            'soltero, pero fue casado con mi madre posterior a mi nacimiento, se divorció y actualmente está casado con otra persona': 'estado_civil_madre',
+            'viudo de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene matrimonio': 'estado_civil_madre',
+            'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio': 'estado_civil_madre',
+            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado del matrimonio anterior': 'estado_civil_madre',
+            'divorciado de otra persona y nunca se casó con mi madre y actualmente está casado con una tercera persona': 'estado_civil_madre',
+            'divorciado de otra persona, nunca se casó con mi madre y actualmente está divorciado con una tercera persona con la cual contrajo matrimonio': 'estado_civil_madre',
             'Viudo': 'estado_civil_madre',
-            'No lo sé': 'estado_civil_madre',
         },
         anterior: ['estado_fisico_mp']
     },
     estado_civil_madre: {
         pregunta: '¿Qué estado civil tenía tu madre al momento de tu nacimiento?',
         opciones: [
-            'casado por el consulado con mi madre',
-            'casado por el consulado con otra persona',
-            'casado por el Registro Civil Cubano con mi madre',
-            'casado por el Registro Civil Cubano con otra persona',
-            'casado pero actualmente mi madre es fallecida',
-            'casado con mi madre pero actualmente está divorciado',
-            'casado con otra persona pero actualmente está divorciado',
-            'soltero',
-            'soltero pero actualmente es fallecido',
-            'soltero pero actualmente esta casado con mi madre',
-            'soltero pero actualmente esta casado con otra persona',
-            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona',
-            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior',
-            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona',
-            'Viudo',
-            'No lo sé',
+            'casada por el consulado con mi padre',
+            'casada por el consulado con otra persona',
+            'casada por el Registro Civil Cubano con mi padre',
+            'casada por el Registro Civil Cubano con otra persona',
+            'casada con mi padre, pero actualmente mi padre es fallecido',
+            'casado con mi padre, pero actualmente ambos son fallecidos',
+            'casada con mi padre, pero actualmente está divorciado de el',
+            'casada con otra persona, pero actualmente está divorciada',
+            'soltera',
+            'soltera, pero actualmente es fallecida',
+            'soltera, pero actualmente está casada con mi padre',
+            'soltera, pero actualmente está casada con otra persona',
+            'soltera, pero fue casada con mi padre posterior a mi nacimiento, se divorció y actualmente está casada con otra persona',
+            'viuda de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio',
+            'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio',
+            'divorciada de otro matrimonio y nunca se casó con mi padre se mantiene divorciada del matrimonio anterior',
+            'divorciada de otra persona y nunca se casó con mi padre y actualmente está casada con una tercera persona',
+            'divorciada de otra persona, nunca se casó con mi padre y actualmente está divorciada con una tercera persona con la cual contrajo matrimonio',
+            'Viuda',
         ],
         siguiente: {
-            'casado por el consulado con mi madre': null,
-            'casado por el consulado con otra persona': null,
-            'casado por el Registro Civil Cubano con mi madre': null,
-            'casado por el Registro Civil Cubano con otra persona': null,
-            'casado pero actualmente mi madre es fallecida': null,
-            'casado con mi madre pero actualmente está divorciado': null,
-            'casado con otra persona pero actualmente está divorciado': null,
-            'soltero': null,
-            'soltero pero actualmente es fallecido': null,
-            'soltero pero actualmente esta casado con mi madre': null,
-            'soltero pero actualmente esta casado con otra persona': null,
-            'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona': null,
-            'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior': null,
-            'divorciado de otro matrimonio y nunca se casó con mi madre pero actualmente tiene un matrimonio con una nueva persona': null,
-            'Viudo': null,
-            'No lo sé': null,
+            'casada por el consulado con mi padre': null,
+            'casada por el consulado con otra persona': null,
+            'casada por el Registro Civil Cubano con mi padre': null,
+            'casada por el Registro Civil Cubano con otra persona': null,
+            'casada con mi padre, pero actualmente mi padre es fallecido': null,
+            'casado con mi padre, pero actualmente ambos son fallecidos': null,
+            'casada con mi padre, pero actualmente está divorciado de el': null,
+            'casada con otra persona, pero actualmente está divorciada': null,
+            'soltera': null,
+            'soltera, pero actualmente es fallecido': null,
+            'soltera, pero actualmente está casada con mi padre': null,
+            'soltera, pero actualmente está casada con otra persona': null,
+            'soltera, pero fue casada con mi padre posterior a mi nacimiento, se divorció y actualmente está casada con otra persona': null,
+            'viuda de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio': null,
+            'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio': null,
+            'divorciada de otro matrimonio y nunca se casó con mi padre se mantiene divorciada del matrimonio anterior': null,
+            'divorciada de otra persona y nunca se casó con mi padre y actualmente está casada con una tercera persona': null,
+            'divorciada de otra persona, nunca se casó con mi padre y actualmente está divorciada con una tercera persona con la cual contrajo matrimonio': null,
+            'Viuda': null,
         },
         anterior: ['estado_fisico_mp']
     },
@@ -477,11 +489,11 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Progenitores casados pero actualmente uno de ellos fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes:<br> certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes:<br> certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
                 break;
             case 'Nació de padres aun solteros':
                 respuesta =
@@ -518,18 +530,18 @@ function obtenerRespuestaPorEstadoCivil(
         switch (estadoCivilAbuelos) {
             case 'Progenitores casados por el consulado':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    'Debes presentar Certificado español de matrimonio <br><strong>Nota:</strong> En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
                 break;
             case 'Progenitores casados por el Registro Civil Cubano':
                 respuesta += 'Debes presentar el certificado de matrimonio cubano';
                 break;
             case 'Progenitores casados pero actualmente uno de ellos fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes:<br> certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
+                    'Debes presentar una de estas variantes:<br> certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
                 break;
             case 'Nació de padres aun solteros':
                 respuesta =
@@ -566,63 +578,97 @@ function obtenerRespuestaPorEstadoCivil(
         switch (estadoCivilPadre) {
             case 'casado por el consulado con mi madre':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    '<strong>De tu padre:</strong> Debes presentar fotocopia del certificado español de matrimonio.<br>';
                 break;
+
             case 'casado por el consulado con otra persona':
-                respuesta += 'Debes presentar el certificado de matrimonio cubano';
+                respuesta += '<strong>De tu padre:</strong> Debes presentar fotocopia del certificado español de ese matrimonio.';
                 break;
-            case 'casado por el Registro Civil Cubano con mi madre':
-                respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+
+            case 'casado por el Registro Civil Cubano con mi madre.':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar el certificado de matrimonio cubano de tus padres. <br>';
                 break;
-            case 'casado por el Registro Civil Cubano con otra persona':
-                respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
+
+            case 'casado por el Registro Civil Cubano con otra persona.':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar el certificado de matrimonio cubano de ese matrimonio. <br>';
                 break;
-            case 'casado pero actualmente mi madre es fallecida':
-                respuesta =
-                    'Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.';
+
+            case 'casado con mi madre, pero actualmente mi madre es fallecida':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar preferentemente:<br><li> un certificado de viudez, pero también puedes usar estas variantes</li><br><li> 1- certificado de vigencia del matrimonio + certificado de defunción,</li><br><li> 2- certificado de matrimonio + certificado de defunción.</li><br>.';
                 break;
-            case 'casado con mi madre pero actualmente está divorciado':
-                respuesta =
-                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
+
+            case 'casado con mi madre, pero actualmente ambos son fallecidos':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar preferentemente:<br><li> un certificado de viudez, pero también puedes usar estas variantes</li><br><li> 1- certificado de vigencia del matrimonio + certificado de defunción,</li><br><li> 2- certificado de matrimonio + certificado de defunción.</li><br>';
                 break;
-            case 'casado con otra persona pero actualmente está divorciado':
-                respuesta =
-                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+
+            case 'casado con mi madre, pero actualmente está divorciado de ella':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br> <li>1- certificado de vigencia del matrimonio o</li><li> 2- certificado de matrimonio con nota del divorcio.<li><br>';
                 break;
+
+            case 'casado con otra persona, pero actualmente está divorciado':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de vigencia de ese matrimonio o</li><li> (2)- certificación de ese matrimonio con nota del divorcio.</li><br>';
+                break;
+
             case 'soltero':
-                respuesta =
-                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una certificación de Fe de soltería.<br>';
                 break;
-            case 'soltero pero actualmente es fallecido':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
+
+            case 'soltero, pero actualmente es fallecido':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar certificación de Fe de soltería + certificado de defunción.<br>';
                 break;
-            case 'soltero pero actualmente esta casado con mi madre':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+
+            case 'soltero, pero actualmente está casado con mi madre':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br><li>1- certificado de matrimonio de tus padres con notas del estado conyugal de estos al casarse o</li><li>2- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio tus padres.</li><br>';
                 break;
-            case 'soltero pero actualmente esta casado con otra persona':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+
+            case 'soltero, pero actualmente está casado con otra persona':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio de tu padre con la otra persona con las notas del estado conyugal de estos al casarse o</li><li> (2)- certificado de matrimonio de tu padre con la otra persona + Certificado de estado conyugal de estos al momento de contraer el matrimonio.<li><br>.';
                 break;
-            case 'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+
+            case 'soltero, pero fue casado con mi madre posterior a mi nacimiento, se divorció y actualmente está casado con otra persona':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio con notas del estado conyugal y la nota del divorcio de ellos o</li><li> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</li><br>';
                 break;
-            case 'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior':
+
+            case 'viudo de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio con notas del estado conyugal al casarse o</li><li> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</li> <br> A esto debe aportar además una de estas variantes:<br><li> (1)- Certificado de viudez o</li><li> (2)- certificado de vigencia del matrimonio del matrimonio anterior.</li><br>';
+                break;
+
+            case 'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio con notas del estado conyugal al casarse o</li><li> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</li> <br> A esto debes aportar además una de estas variantes sobre el matrimonio anterior:<br><li> (1)- Sentencia literal de divorcio o</li><li> (2)- Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO.<li><br>';
+                break;
+
+            case 'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado del matrimonio anterior':
+                respuesta +=
+                    '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de tu papá o</li><li> (2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría.<li><br>';
+                break;
+
+            case 'divorciado de otra persona y nunca se casó con mi madre y actualmente está casado con una tercera persona':
+                respuesta += '<strong>De tu padre:</strong> Debes presentar una de estas variantes:<br> <p> (1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su padre y sumándole estas variantes:</p><br><ol><li> (1)- certificado de matrimonio de tu papá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu papá posterior al nacimiento suyo + certificado de estado conyugal de su papá al casarse con esa tercera persona. </li><p> (2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría:</p><br> <li> (1)- certificado de matrimonio de tu papá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu papá posterior al nacimiento suyo + certificado de estado conyugal de su papá al casarse con esa tercera persona. </li></ol>'
+
+                break;
+            case 'divorciado de otra persona, nunca se casó con mi madre y actualmente está divorciado con una tercera persona con la cual contrajo matrimonio':
                 respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                    '<strong>De tu padre:</strong><ol><p> Debes presentar una de estas variantes:<br> (1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su padre y sumándole estas variantes:</p><br> <li> (1)- certificado de matrimonio de tu papá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu papá posterior al nacimiento suyo + certificado de estado conyugal de su papá al casarse con esa tercera persona. </li><p> (2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría:</p><br> <li> (1)- certificado de matrimonio de tu papá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu papá posterior al nacimiento suyo + certificado de estado conyugal de su papá al casarse con esa tercera persona. </li></ol>';
+
                 break;
             case 'Viudo':
                 respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
+                    '<strong>De tu padre:</strong> Debes presentar: (1)- Certificado de viudez o (2)- certificado de vigencia del matrimonio del matrimonio anterior. <br>';
                 break;
-            case 'No lo sé':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
-                break;
+
             default:
                 respuesta +=
                     'Lo siento, no se reconoce el estado civil de los padres que has introducido.';
@@ -631,65 +677,98 @@ function obtenerRespuestaPorEstadoCivil(
     }
     if (estadoCivilMadre) {
         switch (estadoCivilMadre) {
-            case 'casado por el consulado con mi madre':
+            case 'casada por el consulado con mi padre':
                 respuesta +=
-                    'Debes presentar Certificado español de matrimonio <br>Nota: En caso de que el matrimonio esté inscrito en el Registro Civil del Consulado General de España en La Habana, no es necesario que lo aporte, pero lo recomendamos que lleve una fotocopia del mismo.';
+                    '<strong>De tu madre:</strong> Debes presentar fotocopia del certificado español de matrimonio.<br>';
                 break;
-            case 'casado por el consulado con otra persona':
-                respuesta += 'Debes presentar el certificado de matrimonio cubano';
+
+            case 'casada por el consulado con otra persona':
+                respuesta += '<strong>De tu madre:</strong> Debes presentar fotocopia del certificado español de ese matrimonio.';
                 break;
-            case 'casado por el Registro Civil Cubano con mi madre':
+
+            case 'casada por el Registro Civil Cubano con mi padre':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar el certificado de matrimonio cubano de tus padres.';
+                break;
+
+            case 'casada por el Registro Civil Cubano con otra persona':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar el certificado de matrimonio cubano de ese matrimonio.';
+                break;
+
+            case 'casada con mi padre, pero actualmente mi padre es fallecido':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar preferentemente:<br><li> un certificado de viudez, pero también puedes usar estas variantes</li><br><li> 1- certificado de vigencia del matrimonio + certificado de defunción,</li><br><li> 2- certificado de matrimonio + certificado de defunción.</li>.';
+                break;
+
+            case 'casado con mi padre, pero actualmente ambos son fallecidos':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar preferentemente:<br><li> un certificado de viudez, pero también puedes usar estas variantes</li><br><li> 1- certificado de vigencia del matrimonio + certificado de defunción,</li><br><li> 2- certificado de matrimonio + certificado de defunción.</li>';
+                break;
+
+            case 'casada con mi padre, pero actualmente está divorciado de el':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br> <li> (1)- certificado de vigencia del matrimonio o</li><li> (2)- certificado de matrimonio con nota del divorcio.<li>';
+                break;
+
+            case 'casada con otra persona, pero actualmente está divorciada':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de vigencia de ese matrimonio o</li><li> (2)- certificación de ese matrimonio con nota del divorcio.</li><br>';
+                break;
+
+            case 'soltera':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una certificación de Fe de soltería.<br>';
+                break;
+
+            case 'soltera, pero actualmente es fallecida':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar certificación de Fe de soltería + certificado de defunción.<br>';
+                break;
+
+            case 'soltera, pero actualmente está casada con mi padre':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio de tus padres con notas del estado conyugal de estos al casarse o</li><li> (2)- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio tus padres.</li><br>';
+                break;
+
+            case 'soltera, pero actualmente está casada con otra persona':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio de tu madre con la otra persona con las notas del estado conyugal de estos al casarse o</li><li> (2)- certificado de matrimonio de tu madre con la otra persona + certificado de estado conyugal de estos al momento de contraer el matrimonio.<li><br>.';
+                break;
+
+            case 'soltera, pero fue casada con mi padre posterior a mi nacimiento, se divorció y actualmente está casada con otra persona':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio con notas del estado conyugal y la nota del divorcio de ellos o</li><li> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</li><br>';
+                break;
+
+            case 'viuda de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio con notas del estado conyugal al casarse o</li><li> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</li> <br> A esto debe aportar además una de estas variantes:<br><li> (1)- Certificado de viudez o</li><li> (2)- certificado de vigencia del matrimonio del matrimonio anterior.</li><br>';
+                break;
+
+            case 'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de matrimonio con notas del estado conyugal al casarse o</li><li> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</li> <br> A esto debes aportar además una de estas variantes sobre el matrimonio anterior:<br><li> (1)- Sentencia literal de divorcio o</li><li> (2)- Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO.</li>';
+                break;
+
+            case 'divorciada de otro matrimonio y nunca se casó con mi padre se mantiene divorciada del matrimonio anterior':
+                respuesta +=
+                    '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><li> (1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de tu mamá o</li><li> (2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría.<li><br>';
+                break;
+
+            case 'divorciada de otra persona y nunca se casó con mi padre y actualmente está casada con una tercera persona':
+                respuesta += '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br> <p> (1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su madre y sumárle uno de estas variantes:</p><br><ol><li> (1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu mamá posterior al nacimiento suyo + certificado de estado conyugal de su mamá al casarse con esa tercera persona. </li><p> (2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría:</p><br> <li> (1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu mamá posterior al nacimiento suyo + certificado de estado conyugal de su mamá al casarse con esa tercera persona. </li></ol>'
+
+                break;
+            case 'divorciada de otra persona, nunca se casó con mi padre y actualmente está divorciada con una tercera persona con la cual contrajo matrimonio':
+                respuesta += '<strong>De tu madre:</strong> Debes presentar una de estas variantes:<br><ol><p> (1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su padre y sumándole estas variantes:</p><br> <li> (1)- certificado de matrimonio de tu papá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu papá posterior al nacimiento suyo + certificado de estado conyugal de su papá al casarse con esa tercera persona. </li><p> (2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría:</p><br> <li> (1)- certificado de matrimonio de tu papá posterior al nacimiento suyo con notas del estado conyugal</li><li> (2)- certificado de matrimonio de tu papá posterior al nacimiento suyo + certificado de estado conyugal de su papá al casarse con esa tercera persona. </li></ol>'
+
+                break;
+            case 'Viuda':
                 respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
+                    '<strong>De tu madre:</strong> Debes presentar: (1)- Certificado de viudez o (2)- certificado de vigencia del matrimonio del matrimonio anterior. <br>';
                 break;
-            case 'casado por el Registro Civil Cubano con otra persona':
-                respuesta =
-                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio o certificado de matrimonio con nota del divorcio y legalizado por el MINREX.';
-                break;
-            case 'casado pero actualmente mi madre es fallecida':
-                respuesta =
-                    'Debes presentar Certificación de Fe de soltería en caso de que no hayan contraído nunca matrimonio por ambos progenitores,legalizado por el MINREX.';
-                break;
-            case 'casado con mi madre pero actualmente está divorciado':
-                respuesta =
-                    'Debes presentar Certificación de Fe de soltería y Certificado de defunción,legalizado por el MINREX..';
-                break;
-            case 'casado con otra persona pero actualmente está divorciado':
-                respuesta =
-                    'Debes presentar Certificado de matrimonio con notas del estado conyugal de estos al casarse o Certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio, legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
-                break;
-            case 'soltero':
-                respuesta =
-                    'Debes presentar una Certificado de matrimonio con notas del estado conyugal de estos al casarse y la nota del divorcio o Certificado de vigencia del matrimonio + Certificado de estado conyugal de estos al casarse, actual y todo legalizado por el MINREX.<br> <strong>En caso:</strong> que uno de los 2 era de estado conyugal divorciado al momento de contraer el matrimonio deberá aportar además de lo mencionado: Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría o el Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado, todo legalizado por el MINREX.<br> <strong>En caso:</strong> uno de los 2 era de estado conyugal viudo/a al momento de contraer el matrimonio deberá aportar además de lo mencionado: Certificado de vigencia del matrimonio anterior ya que traerá la fecha en que se disuelve ese matrimonio por causa de la muerte de su cónyuge, actual y todo legalizado por el MINREX.';
-                break;
-            case 'soltero pero actualmente es fallecido':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría y legalizado por el MINREX.';
-                break;
-            case 'soltero pero actualmente esta casado con mi madre':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
-                break;
-            case 'soltero pero actualmente esta casado con otra persona':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
-                break;
-            case 'soltero pero fue casado con mi madre, se divorció y actualmente esta casado con otra persona':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
-                break;
-            case 'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado de matrimonio anterior':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
-                break;
-            case 'Viudo':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
-                break;
-            case 'No lo sé':
-                respuesta =
-                    'Debes presentar Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO relativas al estado civil del progenitor divorciado + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse o Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría + Certificado de matrimonio posterior al nacimiento con notas del divorcio y del estado conyugal del divorciado al casarse, todo legalizado por el MINREX.';
-                break;
+
             default:
                 respuesta +=
                     'Lo siento, no se reconoce el estado civil de los padres que has introducido.';
@@ -842,7 +921,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         // FIN BISNIETO 1----------------
@@ -925,7 +1004,7 @@ function mostrarResultado(respuestas) {
                             <li>Original de la certificación literal de nacimiento española del progenitor de su ${soloAbuelo}, que originariamente hubiera sido español/a.
                             </li>
                             <li>Original y copia del carnet de identidad de su ${soloAbuelo}.</li>
-                            <li>Referente al Estado civil de los progenitores de su ${soloAbuelo} al momento del nacimiento:<br> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de los progenitores de su ${soloAbuelo} al momento del nacimiento:</u><br> ${respuestaBisabuelo}.</li>
                             </ol>
                             <div>`;
                         // FIN BISNIETO 2----------------
@@ -1001,7 +1080,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
 
@@ -1098,14 +1177,14 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*- Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*- Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                             </ol><hr>
                             <div>
                             <h3 class="text-center">ANEXO III</h3><br>
@@ -1118,7 +1197,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         // FIN BISNIETO 5----------------
@@ -1212,14 +1291,14 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Certificado de defunción de su ${soloPadres}.</li>
-                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
@@ -1316,13 +1395,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br><hr>
@@ -1337,7 +1416,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         // FIN BISNIETO 7----------------
@@ -1432,13 +1511,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Certificación de defunción de su ${soloPadres} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
@@ -1535,13 +1614,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>
                             <div>
@@ -1555,7 +1634,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         // FIN BISNIETO 9----------------
@@ -1649,13 +1728,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
@@ -1751,13 +1830,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br><hr>
@@ -1771,7 +1850,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
@@ -1867,13 +1946,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Certificación de defunción de su ${soloPadres} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
@@ -1953,7 +2032,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:<u>/<br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         //1----------------BISABUELA--1--------------
@@ -2039,7 +2118,7 @@ function mostrarResultado(respuestas) {
                             <li>Original de la certificación literal de nacimiento española del progenitor de su ${soloAbuelo}, que originariamente hubiera sido español/a.
                             </li>
                             <li>Original y copia del carnet de identidad de su ${soloAbuelo}.</li>
-                            <li>Referente al Estado civil de los progenitores de su ${soloAbuelo} al momento del nacimiento:<br> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de los progenitores de su ${soloAbuelo} al momento del nacimiento:</u><br> ${respuestaBisabuelo}.</li>
                             </ol>
                             <div>`;
                         //--FIN BISNIETO_BISABUELA_2-----------
@@ -2126,7 +2205,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         //--FIN BISNIETO_BISABUELA_3-----------
@@ -2223,14 +2302,14 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>2-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                             </ol><hr>
                             <div>
                             <h3 class="text-center">ANEXO III</h3><br>
@@ -2243,7 +2322,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
 
@@ -2339,14 +2418,14 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Certificado de defunción de su ${soloPadres}.</li>
-                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
@@ -2443,13 +2522,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br><hr>
@@ -2464,7 +2543,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         // FIN BISNIETO 7----------------
@@ -2559,13 +2638,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Certificación de defunción de su ${soloPadres} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
@@ -2661,13 +2740,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>
                             <div>
@@ -2681,7 +2760,7 @@ function mostrarResultado(respuestas) {
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             </ol>
                             <div>`;
                         // FIN BISNIETO 9----------------
@@ -2776,13 +2855,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br>`;
@@ -2879,13 +2958,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:<u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol></div><br><hr>
@@ -2899,7 +2978,7 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
                             <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres}, al haberse reconocido la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.<br>
                             <strong>Nota 1:</strong> Si su ${soloPadres} se presentó y usted no quiere esperar a sus datos registrales entonces presentar fotocopia del resguardo del mismo a cambio.</li>
-                            <li>Referente al Estado civil de los progenitores al momento de su nacimiento:<br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de los progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
@@ -2996,13 +3075,13 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloAbuelo}, que originariamente es nacido/a español/a aunque su nacimiento haya sido en Cuba.
                             </li>
-                            <li>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}: ${respuestaBisabuelo}.</li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de su ${soloBisabuelo} al momento del nacimiento de tu ${soloAbuelo}:</u> ${respuestaBisabuelo}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
                             <li>También debes pedir al registro de inmigración y extranjería de su municipio que radica en las unidades del carnet de identidad o directamente a Emigración estos documentos:<br> 
                             <p>*-	Certifico de registro de extranjero de su bisabuelo.</p>
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
-                            <li>Referente al Estado civil de sus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de sus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Certificación de defunción de su ${soloAbuelo} </li>
                             <li>Certificación de defunción de su ${soloPadres} </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
@@ -3077,8 +3156,8 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                             </li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol><hr>
                             <div>`;
@@ -3151,8 +3230,8 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
-                        <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:<u><br> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
@@ -3226,8 +3305,8 @@ function mostrarResultado(respuestas) {
                     <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                     <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                     </li>
-                    <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                    <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                    <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                    <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                     <li>Original y copia del carnet de identidad del interesado/a.</li>
                     </ol><hr>
                     <div>`;
@@ -3301,8 +3380,8 @@ function mostrarResultado(respuestas) {
                 <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                 <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                 </li>
-                <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                 <li>Certificación de defunción de su ${soloPadres} </li>
                 <li>Original y copia del carnet de identidad del interesado/a.</li>
                 </ol><hr>
@@ -3376,8 +3455,8 @@ function mostrarResultado(respuestas) {
             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
             <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
             </li>
-            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
             <li>Original y copia del carnet de identidad del interesado/a.</li>
             </ol><hr>
             <div>`;
@@ -3449,8 +3528,8 @@ function mostrarResultado(respuestas) {
         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
         </li>
-        <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+        <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
         <li>Certificación de defunción de su ${soloPadres} </li>
         <li>Original y copia del carnet de identidad del interesado/a.</li>
         </ol><hr>
@@ -3524,8 +3603,8 @@ function mostrarResultado(respuestas) {
                             <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                             <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                             </li>
-                            <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                            <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol><hr>
                             <div>`;
@@ -3598,8 +3677,8 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
-                        <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
@@ -3673,8 +3752,8 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX. </li>
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
-                        <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
                         <div>`;
@@ -3748,8 +3827,8 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
-                        <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
@@ -3823,8 +3902,8 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
-                        <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
                         <div>`;
@@ -3897,8 +3976,8 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano de su ${soloPadres} y legalizado en el MINREX.</li>
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
-                        <li>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}: ${respuestaAbuelos}.</li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
@@ -3963,7 +4042,7 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
                         <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres} o fotocopia del reguardo e los solicitantes mayores de edad que opten a la nacionalidad española, al haberse reconocido a sus progenitores la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.
                         </li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol>
                         <div>`;
@@ -4027,7 +4106,7 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
                         <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres} o fotocopia del reguardo de los solicitantes mayores de edad que opten a la nacionalidad española, al haberse reconocido a sus progenitores la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.
                         </li>
-                        <li>Referente al Estado civil de tus progenitores al momento de su nacimiento: ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol>
