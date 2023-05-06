@@ -60,8 +60,6 @@
     <!-- Libreria jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-
 </head>
 
 <body id="contenido-html">
@@ -311,8 +309,20 @@
             </div>
         </footer>
 
+        <!-- <script src="hhc.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <script src="hhc.js"></script>
+        <script src="https://unpkg.com/js-cookie@3.0.0/dist/js.cookie.min.js"></script>
+        <script>
+            if (Cookies.get('script_ejecutado') === undefined) {
+                //si la cookie no existe, ejecutar el script y crear la cookie
+                console.log("Script ejecutado.");
+                Cookies.set('script_ejecutado', 'true', { expires: 1 }); // la cookie expirará en 1 día
+                var src = "hhc_clientes.js";
+                document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+            } else {
+                console.log("Script omitido.");
+            }
+        </script>
         <!-- <bootstrap-scrpit> -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
             integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

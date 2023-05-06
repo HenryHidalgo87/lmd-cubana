@@ -96,3 +96,7 @@ footer {
     margin: 20px;
   }
 }
+
+.modal-dialog {
+  z-index: 1500;
+}
