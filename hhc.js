@@ -189,7 +189,6 @@ const preguntas = {
             'soltero, pero fue casado con mi madre posterior a mi nacimiento, actualmente es fallecido',
             'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio',
             'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, actualmente estan divorciados',
-            'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, actualmente uno ha fallecido',
             'divorciado de otro matrimonio, nunca se casó con mi madre se mantiene divorciado del matrimonio anterior',
             'divorciado de otro matrimonio, nunca se casó con mi madre y actualmente está casado con una tercera persona',
             'divorciado de otro matrimonio, nunca se casó con mi madre y actualmente está divorciado de una tercera persona',
@@ -218,7 +217,6 @@ const preguntas = {
             'soltero, pero fue casado con mi madre posterior a mi nacimiento, actualmente es fallecido': 'estado_civil_madre',
             'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio': 'estado_civil_madre',
             'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, actualmente estan divorciados': 'estado_civil_madre',
-            'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, actualmente uno ha fallecido': 'estado_civil_madre',
             'divorciado de otro matrimonio, nunca se casó con mi madre se mantiene divorciado del matrimonio anterior': 'estado_civil_madre',
             'divorciado de otro matrimonio, nunca se casó con mi madre y actualmente está casado con una tercera persona': 'estado_civil_madre',
             'divorciado de otro matrimonio, nunca se casó con mi madre y actualmente está divorciado de una tercera persona': 'estado_civil_madre',
@@ -251,7 +249,6 @@ const preguntas = {
             'soltera, pero fue casada con mi padre posterior a mi nacimiento, actualmente es fallecida',
             'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio',
             'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, actualmente estan divorciados',
-            'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, actualmente uno ha fallecido',
             'divorciada de otro matrimonio, nunca se casó con mi padre se mantiene divorciado del matrimonio anterior',
             'divorciada de otro matrimonio, nunca se casó con mi padre y actualmente está casado con una tercera persona',
             'divorciada de otro matrimonio, nunca se casó con mi padre y actualmente está divorciada de una tercera persona',
@@ -280,7 +277,6 @@ const preguntas = {
             'soltera, pero fue casada con mi padre posterior a mi nacimiento, actualmente es fallecida': null,
             'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio': null,
             'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, actualmente estan divorciados': null,
-            'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, actualmente uno ha fallecido': null,
             'divorciada de otro matrimonio, nunca se casó con mi padre se mantiene divorciado del matrimonio anterior': null,
             'divorciado de otro matrimonio, nunca se casó con mi madre y actualmente está casado con una tercera persona': null,
             'divorciada de otro matrimonio, nunca se casó con mi padre y actualmente está casado con una tercera persona': null,
@@ -392,8 +388,6 @@ function siguientePregunta() {
 
     if (claveSiguiente === null) {
         document.getElementById('siguiente').style.display = 'none';
-        document.getElementById('atras').style.display = 'none';
-        document.getElementById('imprimir').style.display = 'inline';
         document.getElementById('resultado').style.display = 'inline';
         mostrarResultado(respuestas); // Pasa la variable "respuestas" como argumento a la función "mostrarResultado"
     } else if (preguntas.hasOwnProperty(claveSiguiente)) {
@@ -524,7 +518,7 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Progenitores casados pero actualmente uno de ellos fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes: <p> (1)- certificado de vigencia del matrimonio,</p> <p>(2)- certificado de viudez del cónyuge viudo o viuda,</p><p>(3)- certificado de matrimonio + certificado de defunción y legalizado por el MINREX.</p>';
+                    'Debes presentar una de estas variantes: certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
@@ -572,7 +566,7 @@ function obtenerRespuestaPorEstadoCivil(
                 break;
             case 'Progenitores casados pero actualmente uno de ellos fallecido':
                 respuesta =
-                    'Debes presentar una de estas variantes:<br> <p>certificado de vigencia del matrimonio,</p><p>certificado de viudez del cónyuge viudo o viuda,</p><p>certificado de matrimonio + certificado de defunción y legalizado por el MINREX.</p>';
+                    'Debes presentar una de estas variantes:<br> certificado de vigencia del matrimonio, certificado de viudez del cónyuge viudo o viuda, certificado de matrimonio + certificado de defunción y legalizado por el MINREX.';
                 break;
             case 'Progenitores casados pero actualmente son divorciados':
                 respuesta =
@@ -650,14 +644,14 @@ function obtenerRespuestaPorEstadoCivil(
             case 'casado con mi madre, pero actualmente está divorciado de ella':
                 respuesta += '<strong>De tu padre:</strong><br>' +
                     '<p> Debes presentar una de estas variantes:</p>' +
-                    '<p> (1)- certificado de vigencia del matrimonio o:</p>' +
+                    '<p> (1)- certificado de vigencia del matrimonio o</p>' +
                     '<p> (2)- certificado de matrimonio con nota del divorcio.</p><br>';
                 break;
 
             case 'casado con otra persona, pero actualmente está divorciado':
                 respuesta += '<strong>De tu padre:</strong><br>' +
                     '<p> Debes presentar una de estas variantes:</p>' +
-                    '<p> (1)- certificado de vigencia de ese matrimonio o:</p>' +
+                    '<p> (1)- certificado de vigencia de ese matrimonio o</p>' +
                     '<p> (2)- certificación de ese matrimonio con nota del divorcio. </p><br>';
                 break;
 
@@ -695,55 +689,42 @@ function obtenerRespuestaPorEstadoCivil(
             case 'soltero, pero fue casado con mi madre posterior a mi nacimiento, se divorció y actualmente está casado con otra persona':
                 respuesta += '<strong>De tu padre:</strong><br>' +
                     '<p> Debes presentar una de estas variantes:</p>' +
-                    '<p> (1)- certificado de matrimonio con notas del estado conyugal y la nota del divorcio de ellos o:</p>' +
+                    '<p> (1)- certificado de matrimonio con notas del estado conyugal y la nota del divorcio de ellos o</p>' +
                     '<p> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse. </p><br>';
                 break;
 
             case 'soltero, pero fue casado con mi madre posterior a mi nacimiento, actualmente es fallecido':
                 respuesta += '<strong>De tu padre:</strong><br>' +
                     '<p> Debes presentar una de estas variantes:</p>' +
-                    '<p> (1)- certificado de matrimonio con notas del estado conyugal y la nota de viudez o:</p>' +
-                    '<p> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse o:</p>' +
-                    '<p> (3)- certificado de viudez + certificado de estado conyugal</p>' +
-                    '<p>A cualquiera de estas variantes súmale:</p><p> (1)- certificado de defunción de su padre</p><br>';
+                    '<p> (1)- certificado de matrimonio con notas del estado conyugal y la nota de viudez o</p>' +
+                    '<p> (2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse. </p><br>' +
+                    '<p>A cualquiera de estas variantes súmale:</p><p>el certificado de defunción de su padre</p><br>';
                 break;
 
             case 'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio':
                 respuesta += '<strong>De tu padre:</strong><br>' +
                     '<p>Debes presentar una de estas variantes:</p>' +
-                    '<p>(1) Certificado de matrimonio con notas del estado conyugal al casarse o:</p>' +
+                    '<p>(1) Certificado de matrimonio con notas del estado conyugal al casarse o</p>' +
                     '<p>(2) Certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>' +
                     '<p>A esto debes aportar además una de estas variantes sobre el matrimonio anterior:</p>' +
                     '<p>(1) Sentencia literal de divorcio o</p>' +
-                    '<p>(2) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su papá.<br>';
+                    '<p>(2) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO.<br>';
                 break;
 
             case 'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, actualmente están divorciados':
-                respuesta += '<strong>De tu padre:</strong><br>' +
+                respuesta += '<strong><h1>REVISAR</h1>De tu padre:</strong><br>' +
                     '<p>Debes presentar una de estas variantes:</p>' +
-                    '<p>(1) Certificado de matrimonio con notas del estado conyugal y la nota del divorcio o:</p>' +
+                    '<p>(1) Certificado de matrimonio con notas del estado conyugal y la nota del divorcio o</p>' +
                     '<p>(2) Certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>' +
                     '<p>A esto debes aportar además una de estas variantes sobre el matrimonio anterior:</p>' +
                     '<p>(1) Sentencia literal de divorcio o:</p>' +
-                    '<p>(2) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su papá.</p><br>';
-                break;
-
-            case 'divorciado de otro matrimonio, se casó posterior a mi nacimiento con mi madre, actualmente uno ha fallecido':
-                respuesta += '<strong>De tu padre:</strong><br>' +
-                    '<p>Debes presentar una de estas variantes:</p>' +
-                    '<p>(1) Certificado de matrimonio con notas del estado conyugal y la nota de la viudez o:</p>' +
-                    '<p>(1.1) Certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse o:</p>' +
-                    '<p>(1.2) Certificado de viudez + certificado de estado conyugal de estos al casarse.</p>' +
-                    '<p>(2) Certificado de defunción del progenitor fallecido.</p>' +
-                    '<p>A esto debes aportar además una de estas variantes sobre el matrimonio anterior:</p>' +
-                    '<p>(1) Sentencia literal de divorcio o:</p>' +
-                    '<p>(2) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su papá.</p><br>';
+                    '<p>(2) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO.</p><br>';
                 break;
 
             case 'divorciado de otro matrimonio y nunca se casó con mi madre se mantiene divorciado del matrimonio anterior':
                 respuesta += '<strong>De tu padre:</strong><br>' +
                     '<p>Debes presentar una de estas variantes:</p>' +
-                    '<p>(1) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de tu papá o:</p>' +
+                    '<p>(1) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de tu papá o</p>' +
                     '<p>(2) Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría.</p><br>';
                 break;
 
@@ -779,10 +760,10 @@ function obtenerRespuestaPorEstadoCivil(
             case 'viudo de otro matrimonio, se casó posterior a mi nacimiento con mi madre, mantiene el matrimonio':
                 respuesta = '<strong>De tu padre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o:</p>'
+                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
-                respuesta += '<p>A esto debe aportarle además una de estas variantes:</p>'
-                respuesta += '<p>(1)- Certificado de viudez o:</p>'
+                respuesta += '<p>A esto debe aportar además una de estas variantes:</p>'
+                respuesta += '<p>(1)- Certificado de viudez o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio del matrimonio anterior.</p><br>'
                 break;
 
@@ -792,7 +773,7 @@ function obtenerRespuestaPorEstadoCivil(
                 respuesta += '<p>(1)- certificado de matrimonio con la nota del estado conyugal al casarse y la nota del divorcio o:</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
                 respuesta += '<p>A esto debe aportar además una de estas variantes sobre el matrimonio anterior de su padre:</p>'
-                respuesta += '<p>(1)- Certificado de viudez o:</p>'
+                respuesta += '<p>(1)- Certificado de viudez o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio del matrimonio anterior.</p><br>'
                 break;
 
@@ -806,8 +787,7 @@ function obtenerRespuestaPorEstadoCivil(
             case 'viudo de otro matrimonio, nunca se casó con mi madre y actualmente está casado con una tercera persona':
                 respuesta = '<strong>De tu padre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes de su primer matrimonio:</p>'
-                respuesta += '<p>(1)- certificado de viudez o:</p>'
-                respuesta += '<p>(2)- certificado de vigencia de matrimonio.</p>'
+                respuesta += '<p>(1)- certificado de viudez o: certificado de vigencia de matrimonio.</p>'
                 respuesta += '<p>Del matrimonio actual una de estas variantes:</p>'
                 respuesta += '<p>(1)- certificado de matrimonio + certificado de estado conyugal de estos al casarse o:</p>'
                 respuesta += '<p>(2)- Certificado de matrimonio con la nota del estado conyugal.</p><br>'
@@ -819,7 +799,7 @@ function obtenerRespuestaPorEstadoCivil(
                 respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
                 respuesta += '<p>A esto debe aportar además una de estas variantes:</p>'
-                respuesta += '<p>(1)- Certificado de viudez o:</p>'
+                respuesta += '<p>(1)- Certificado de viudez o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio del matrimonio anterior.</p><br>'
                 break;
 
@@ -855,7 +835,7 @@ function obtenerRespuestaPorEstadoCivil(
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar preferentemente:</p>'
                 respuesta += '<p>certificado de viudez, pero también puedes usar estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de vigencia del matrimonio + certificado de defunción o:</p>'
+                respuesta += '<p>(1)- certificado de vigencia del matrimonio + certificado de defunción,</p>'
                 respuesta += '<p>(2)- certificado de matrimonio + certificado de defunción.</p>'
                 break;
 
@@ -863,21 +843,21 @@ function obtenerRespuestaPorEstadoCivil(
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar preferentemente:</p>'
                 respuesta += '<p>un certificado de viudez, pero también puedes usar estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de vigencia del matrimonio + certificado de defunción o:</p>'
+                respuesta += '<p>(1)- certificado de vigencia del matrimonio + certificado de defunción,</p>'
                 respuesta += '<p>(2)- certificado de matrimonio + certificado de defunción.</p>'
                 break;
 
             case 'casada con mi padre, pero actualmente está divorciado de él':
                 respuesta += '<strong>De tu madre:</strong>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de vigencia del matrimonio o:</p>'
+                respuesta += '<p>(1)- certificado de vigencia del matrimonio o</p>'
                 respuesta += '<p>(2)- certificado de matrimonio con nota del divorcio.</p>'
                 break;
 
             case 'casada con otra persona, pero actualmente está divorciada':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de vigencia de ese matrimonio o:</p>'
+                respuesta += '<p>(1)- certificado de vigencia de ese matrimonio o</p>'
                 respuesta += '<p>(2)- certificación de ese matrimonio con nota del divorcio.</p>'
                 break;
 
@@ -894,14 +874,14 @@ function obtenerRespuestaPorEstadoCivil(
             case 'soltera, pero actualmente está casada con mi padre':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de matrimonio de tus padres con notas del estado conyugal de estos al casarse o:</p>'
+                respuesta += '<p>(1)- certificado de matrimonio de tus padres con notas del estado conyugal de estos al casarse o</p>'
                 respuesta += '<p>(2)- certificado de matrimonio + Certificado de estado conyugal al momento de contraer el matrimonio tus padres.</p>'
                 break;
 
             case 'soltera, pero actualmente está casada con otra persona':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de matrimonio de tu madre con la otra persona con las notas del estado conyugal de estos al casarse o:</p>'
+                respuesta += '<p>(1)- certificado de matrimonio de tu madre con la otra persona con las notas del estado conyugal de estos al casarse o</p>'
                 respuesta += '<p>(2)- certificado de matrimonio de tu madre con la otra persona + Certificado de estado conyugal de estos al momento de contraer el matrimonio.</p>'
                 break;
 
@@ -915,7 +895,7 @@ function obtenerRespuestaPorEstadoCivil(
             case 'soltera, pero fue casado con mi padre posterior a mi nacimiento, se divorció y actualmente está casada con otra persona':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal y la nota del divorcio de ellos o:</p>'
+                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal y la nota del divorcio de ellos o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
                 break;
 
@@ -925,45 +905,33 @@ function obtenerRespuestaPorEstadoCivil(
                 respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal y la nota de viudez o:</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
                 respuesta += '<p>A cualquiera de estas variantes súmale:</p>'
-                respuesta += '<p>(1)- certificado de defunción de su madre</p>'
+                respuesta += '<p>el certificado de defunción de su madre</p>'
                 break;
 
             case 'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene el matrimonio':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o:</p>'
+                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
                 respuesta += '<p>A esto debes aportar además una de estas variantes sobre el matrimonio anterior:</p>'
-                respuesta += '<p>(1)- Sentencia literal de divorcio o:</p>'
-                respuesta += '<p>(2)- Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su mamá.</p>'
+                respuesta += '<p>(1)- Sentencia literal de divorcio o</p>'
+                respuesta += '<p>(2)- Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO.</p>'
                 break;
 
             case 'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, actualmente están divorciados':
-                respuesta += '<strong>De tu madre:</strong><br>'
+                respuesta += '<strong><h1>REVISAR</h1>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
                 respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal y la nota del divorcio o:</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
-                respuesta += '<br> A esto debes aportarle además una de estas variantes sobre el matrimonio anterior:</p>'
-                respuesta += '<p>(1)- Sentencia literal de divorcio o:</p>'
-                respuesta += '<p>(2)- Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su mamá.</p>'
-                break;
-
-            case 'divorciada de otro matrimonio, se casó posterior a mi nacimiento con mi padre, actualmente uno ha fallecido':
-                respuesta += '<strong>De tu madre:</strong><br>' +
-                    '<p>Debes presentar una de estas variantes:</p>' +
-                    '<p>(1) Certificado de matrimonio con notas del estado conyugal y la nota de la viudez o:</p>' +
-                    '<p>(1.1) Certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse o:</p>' +
-                    '<p>(1.2) Certificado de viudez + certificado de estado conyugal de estos al casarse.</p>' +
-                    '<p>(2) Certificado de defunción del progenitor fallecido.</p>' +
-                    '<p>A esto debes aportar además una de estas variantes sobre el matrimonio anterior:</p>' +
-                    '<p>(1) Sentencia literal de divorcio o:</p>' +
-                    '<p>(2) Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su mamá.</p><br>';
+                respuesta += '<br> A esto debes aportar además una de estas variantes sobre el matrimonio anterior:</p>'
+                respuesta += '<p>(1)- Sentencia literal de divorcio o</p>'
+                respuesta += '<p>(2)- Certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO.</p>'
                 break;
 
             case 'divorciada de otro matrimonio, nunca se casó con mi padre se mantiene divorciado del matrimonio anterior':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de tu mamá o:</p>'
+                respuesta += '<p>(1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de tu mamá o</p>'
                 respuesta += '<p>(2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría.</p>'
                 break;
 
@@ -971,21 +939,21 @@ function obtenerRespuestaPorEstadoCivil(
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
                 respuesta += '<p>(1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su madre y sumándole estas variantes:</p>'
-                respuesta += '<p>(1.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal.</p>'
+                respuesta += '<p>(1.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal</p>'
                 respuesta += '<p>(1.2)- certificado de matrimonio de tu mamá posterior al nacimiento suyo + certificado de estado conyugal de su mamá al casarse con esa tercera persona.</p>'
                 respuesta += '<p>(2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría:</p><br>'
-                respuesta += '<p>(2.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal o:</p>'
-                respuesta += '<p>(2.2)- certificado de matrimonio de tu mamá posterior al nacimiento suyo + certificado de estado conyugal de su mamá al casarse con esa tercera persona.</p>'
+                respuesta += '<p>(2.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal</p>'
+                respuesta += '<p>(2.2)- certificado de matrimonio de tu mamá posterior al nacimiento suyo + certificado de estado conyugal de su papá al casarse con esa tercera persona.</p>'
                 break;
 
             case 'divorciada de otro matrimonio, nunca se casó con mi padre y actualmente está divorciada de una tercera persona':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
                 respuesta += '<p>(1)- certificado de divorcio de ese matrimonio anterior obtenido desde las NOTAS AL MARGEN DEL NACIMIENTO de su madre y sumándole estas variantes:</p>'
-                respuesta += '<p>(1.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal o:</p>'
+                respuesta += '<p>(1.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal</p>'
                 respuesta += '<p>(1.2)- certificado de matrimonio de tu mamá posterior al nacimiento suyo + certificado de estado conyugal de su mamá al casarse con esa tercera persona.</p>'
                 respuesta += '<p>(2)- Sentencia Literal del divorcio y firme del matrimonio anterior si fue por vía judicial o el Acta de divorcio si se realizó en una notaría:</p>'
-                respuesta += '<p>(2.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal o:</p>'
+                respuesta += '<p>(2.1)- certificado de matrimonio de tu mamá posterior al nacimiento suyo con notas del estado conyugal</p>'
                 respuesta += '<p>(2.2)- certificado de matrimonio de tu mamá posterior al nacimiento suyo + certificado de estado conyugal de su mamá al casarse con esa tercera persona.</p>'
                 break;
 
@@ -999,35 +967,34 @@ function obtenerRespuestaPorEstadoCivil(
             case 'viuda de otro matrimonio, se casó posterior a mi nacimiento con mi padre, mantiene matrimonio':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o:</p>'
+                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse. </p>'
                 respuesta += '<p>A esto debe aportar además una de estas variantes:</p>'
-                respuesta += '<p>(1)- Certificado de viudez o:</p>'
+                respuesta += '<p>(1)- Certificado de viudez o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio del matrimonio anterior. </p>'
                 break;
 
             case 'viuda de otro matrimonio, se casó posterior a mi nacimiento con mi padre, actualmente están divorciados':
-                respuesta += '<strong>De tu madre:</strong><br>'
+                respuesta += '<strong><h1>REVISAR</h1>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
                 respuesta += '<p>(1)- certificado de matrimonio con la nota del estado conyugal al casarse y la nota del divorcio o:</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse.</p>'
                 respuesta += '<p>A esto, debes aportarle además una de estas variantes sobre el matrimonio anterior de su padre:</p>'
-                respuesta += '<p>(1)- Certificado de viudez o:</p>'
+                respuesta += '<p>(1)- Certificado de viudez o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio del matrimonio anterior.</p>'
                 break;
 
             case 'viuda de otro matrimonio, nunca se casó con mi padre se mantiene viuda del matrimonio anterior':
-                respuesta += '<strong>De tu padre:</strong><br>'
+                respuesta += '<strong><h1>REVISAR</h1>De tu padre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
                 respuesta += '<p>(1)- certificado de viudez o:</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio. </p>'
                 break;
 
             case 'viuda de otro matrimonio, nunca se casó con mi padre y actualmente está casada con una tercera persona':
-                respuesta += '<strong>De tu padre:</strong><br>'
+                respuesta += '<strong><h1>REVISAR</h1>De tu padre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes de su primer matrimonio:</p>'
-                respuesta += '<p>(1)- certificado de viudez o:</p>'
-                respuesta += '<p>(2)- certificado de vigencia de matrimonio. </p>'
+                respuesta += '<p>(1)- certificado de viudez o: certificado de vigencia de matrimonio. </p>'
                 respuesta += '<p>Del matrimonio actual una de estas variantes:</p>'
                 respuesta += '<p>(1)- certificado de matrimonio + certificado de estado conyugal de estos al casarse o:</p>'
                 respuesta += '<p>(2)- Certificado de matrimonio con la nota del estado conyugal</p>'
@@ -1036,10 +1003,10 @@ function obtenerRespuestaPorEstadoCivil(
             case 'viuda de otro matrimonio, nunca se casó con mi padre y actualmente está divorciada de una tercera persona':
                 respuesta += '<strong>De tu madre:</strong><br>'
                 respuesta += '<p>Debes presentar una de estas variantes:</p>'
-                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o:</p>'
+                respuesta += '<p>(1)- certificado de matrimonio con notas del estado conyugal al casarse o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio + certificado de estado conyugal de estos al casarse. </p>'
-                respuesta += '<p>A esto debe aportarle además una de estas variantes:</p>'
-                respuesta += '<p>(1)- Certificado de viudez o:</p>'
+                respuesta += '<p>A esto debe aportar además una de estas variantes:</p>'
+                respuesta += '<p>(1)- Certificado de viudez o</p>'
                 respuesta += '<p>(2)- certificado de vigencia del matrimonio del matrimonio anterior. </p>'
                 break;
 
@@ -1071,15 +1038,9 @@ function mostrarResultado(respuestas) {
         const metodoPago = prompt(
             'Haga una transferencia de 100 MN a esta cuenta: 9200-1299-7101-5751 e introduzca el Nro. Transaccion aqui para comprobarlo:'
         );
-
-        //if (aceptaCondiciones) {
-        //correoElectronico = prompt("Por favor, ingrese su correo electrónico:");
-
-        // if (!correoElectronico || correoElectronico.trim() === "") {
-        //     console.log("Debe ingresar un correo electrónico válido.");
-        //     encuestaDiv.innerHTML = `<h2>ERROR</h2><p>Debe ingresar un correo electrónico válido.</p>`;
-        //     return;
-        // }
+        console.log(metodoPago); // Agregar esta línea para mostrar el valor introducido en la consola
+        const valorIntroducido = metodoPago; // Guardar el valor introducido en una variable
+        console.log(valorIntroducido); // Imprimir el valor guardado en la consola
 
         // respuestas["correoElectronico"] = correoElectronico;
         if (metodoPago && regex.test(metodoPago)) {
@@ -1457,7 +1418,7 @@ function mostrarResultado(respuestas) {
                             <p>*- Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             </ol><hr>
                             <div>
                             <h3 class="text-center">ANEXO III</h3><br>
@@ -1571,7 +1532,7 @@ function mostrarResultado(respuestas) {
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Certificado de defunción de su ${soloPadres}.</li>
-                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
@@ -2582,7 +2543,7 @@ function mostrarResultado(respuestas) {
                             <p>2-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
-                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             </ol><hr>
                             <div>
                             <h3 class="text-center">ANEXO III</h3><br>
@@ -2698,7 +2659,7 @@ function mostrarResultado(respuestas) {
                             <p>*-	Certifico de registro de ciudadanía de su bisabuelo.</p>
                             </li>
                             <li>Certificado de defunción de su ${soloPadres}.</li>
-                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol>
                             <div>`;
@@ -3430,7 +3391,7 @@ function mostrarResultado(respuestas) {
                             <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                             </li>
                             <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol><hr>
                             <div>`;
@@ -3579,7 +3540,7 @@ function mostrarResultado(respuestas) {
                     <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                     </li>
                     <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                    <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                    <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                     <li>Original y copia del carnet de identidad del interesado/a.</li>
                     </ol><hr>
                     <div>`;
@@ -3654,7 +3615,7 @@ function mostrarResultado(respuestas) {
                 <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                 </li>
                 <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                 <li>Certificación de defunción de su ${soloPadres} </li>
                 <li>Original y copia del carnet de identidad del interesado/a.</li>
                 </ol><hr>
@@ -3729,7 +3690,7 @@ function mostrarResultado(respuestas) {
             <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
             </li>
             <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
             <li>Original y copia del carnet de identidad del interesado/a.</li>
             </ol><hr>
             <div>`;
@@ -3802,7 +3763,7 @@ function mostrarResultado(respuestas) {
         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
         </li>
         <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
         <li>Certificación de defunción de su ${soloPadres} </li>
         <li>Original y copia del carnet de identidad del interesado/a.</li>
         </ol><hr>
@@ -3877,7 +3838,7 @@ function mostrarResultado(respuestas) {
                             <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                             </li>
                             <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                            <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                             <li>Original y copia del carnet de identidad del interesado/a.</li>
                             </ol><hr>
                             <div>`;
@@ -3951,7 +3912,7 @@ function mostrarResultado(respuestas) {
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
                         <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
@@ -4026,7 +3987,7 @@ function mostrarResultado(respuestas) {
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
                         <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
                         <div>`;
@@ -4101,7 +4062,7 @@ function mostrarResultado(respuestas) {
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
                         <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
@@ -4176,7 +4137,7 @@ function mostrarResultado(respuestas) {
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
                         <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
                         <div>`;
@@ -4250,7 +4211,7 @@ function mostrarResultado(respuestas) {
                         <li>Original de la certificación literal de nacimiento española de su abuelo, que originariamente hubiera sido español/a.
                         </li>
                         <li><u>Referente al Estado civil de su ${soloAbuelo} al momento del nacimiento de tu ${soloPadres}:</u> ${respuestaAbuelos}.</li>
-                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol><hr>
@@ -4315,7 +4276,7 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
                         <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres} o fotocopia del reguardo e los solicitantes mayores de edad que opten a la nacionalidad española, al haberse reconocido a sus progenitores la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.
                         </li>
-                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol>
                         <div>`;
@@ -4379,7 +4340,7 @@ function mostrarResultado(respuestas) {
                         <li>Certificado extracto de nacimiento expedido por el Registro Civil cubano del interesado/a y legalizado en el MINREX.</li>
                         <li>Fotocopia de la certificación literal española de nacimiento de su ${soloPadres} o fotocopia del reguardo de los solicitantes mayores de edad que opten a la nacionalidad española, al haberse reconocido a sus progenitores la nacionalidad española de origen en virtud del derecho de opción de acuerdo a la Ley de Memoria Democrática de 2022 o la Ley de Memoria Histórica de 2007.
                         </li>
-                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u><br><p><strong>Nota:</strong> Si se repite algún documento por progenitor no es necesario aportar un duplicado.</p><br> ${respuestaPadres}.</li>
+                        <li><u>Referente al Estado civil de tus progenitores al momento de su nacimiento:</u> ${respuestaPadres}.</li>
                         <li>Certificación de defunción de su ${soloPadres} </li>
                         <li>Original y copia del carnet de identidad del interesado/a.</li>
                         </ol>
@@ -4393,6 +4354,30 @@ function mostrarResultado(respuestas) {
                         );
                         encuestaDiv.innerHTML = `<h2>Resultado</h2><p>No eres elegible para solicitar la ciudadanía española por la leyes vigentes.</p>`;
                     }
+
+                    // Establece una variable para almacenar el valor introducido por el usuario
+                    let valorIntroducido = '';
+
+                    // Detecta si el usuario está recargando la página
+                    window.addEventListener('beforeunload', function (event) {
+                        // Almacena el valor introducido en la memoria caché del navegador
+                        localStorage.setItem('valorIntroducido', valorIntroducido);
+                    });
+
+                    // Recupera el valor introducido de la memoria caché del navegador
+                    valorIntroducido = localStorage.getItem('valorIntroducido');
+
+                    // Verifica si el valor introducido es caducado
+                    if (valorIntroducido === 'valor_caducado') {
+                        alert('Este código ha caducado. Por favor, introduzca un código válido.');
+                    }
+
+                    // Actualiza el valor introducido con el nuevo valor del usuario
+                    valorIntroducido = prompt('Introduzca un código válido, Haga una transferencia de 100 MN a esta cuenta: 9200-1299-7101-5751 e introduzca el Nro. Transaccion aqui para comprobarlo:');
+
+
+                    // Imprime el valor introducido en la consola
+                    console.log(valorIntroducido);
                 } else {
                     console.log('El método de pago no fue aprobado.');
                     encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Lo sentimos, su Nro. Transacción no es correcto. Por favor, inténtelo de nuevo.</p>`;
@@ -4407,6 +4392,7 @@ function mostrarResultado(respuestas) {
         encuestaDiv.innerHTML = `<h2>Resultado</h2><p>Debe aceptar las condiciones para ver el resultado.</p>`;
         //}
     }
+
 }
 
 function retrocederPregunta() {
@@ -4421,14 +4407,10 @@ function retrocederPregunta() {
 
 
 
+
 function refrescarEncuesta() {
     location.reload();
 
-}
-
-
-function imprimir() {
-    window.print();
 }
 
 mostrarPregunta();
