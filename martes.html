@@ -195,7 +195,8 @@
             <span class="h5">Lista de Usuarios.</span>
         </div>
     </section>
-    <section class="py-5">
+    <section id="citaslmd" class="py-5">
+        <div class="h3 text-center">Citas LMD</div>
         <div class="container">
             <table class="table table-hover">
                 <thead>
@@ -204,37 +205,163 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Usuario</th>
                         <th scope="col">Contraseña</th>
-                        <th scope="col">Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Jing Yang</td>
-                        <td>99121914412 <button onclick="copyToClipboard('99121914412')">Copiar</button></td>
-                        <td>C35e3ZD732 <button onclick="copyToClipboard('C35e3ZD732')">Copiar</button></td>
-                        <td>Junio</td>
+                        <td>Annia 1</td>
+                        <td>04071266007<button class="btn btn-primary ml-2" onclick="copyToClipboard('04071266007')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td>Vu22CcFm36<button class="btn btn-primary ml-2" onclick="copyToClipboard('Vu22CcFm36')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
-                        <td>Anne Marie</td>
-                        <td>44110409586 <button onclick="copyToClipboard('44110409586')">Copiar</button></td>
-                        <td>5NGPAKWN2Z <button onclick="copyToClipboard('5NGPAKWN2Z')">Copiar</button></td>
-                        <td>Junio</td>
+                        <td>Annia 2</td>
+                        <td>93111304815<button class="btn btn-primary ml-2" onclick="copyToClipboard('93111304815')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td>GPBKW2Zu65<button class="btn btn-primary ml-2" onclick="copyToClipboard('GPBKW2Zu65')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td>tamaragonzalez1967</td>
-                        <td>71061611615 <button onclick="copyToClipboard('71061611615')">Copiar</button></td>
-                        <td>zqtg1SsnN5 <button onclick="copyToClipboard('zqtg1SsnN5')">Copiar</button></td>
-                        <td>Junio</td>
+                        <td>Cardenas</td>
+                        <td>70090530295<button class="btn btn-primary ml-2" onclick="copyToClipboard('70090530295')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td>KFv2zkY8S8<button class="btn btn-primary ml-2" onclick="copyToClipboard('KFv2zkY8S8')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td>Dayner</td>
-                        <td>92070125943 <button onclick="copyToClipboard('92070125943')">Copiar</button></td>
-                        <td>Vjd122kSWm <button onclick="copyToClipboard('Vjd122kSWm')">Copiar</button></td>
-                        <td>Junio</td>
+                        <td>Dayner (VERIFICAR)</td>
+                        <td>92070125943 <button class="btn btn-primary ml-2" onclick="copyToClipboard('92070125943')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td>Vjd122kSWm <button class="btn btn-primary ml-2" onclick="copyToClipboard('Vjd122kSWm')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Celia</td>
+                        <td>78092116471<button class="btn btn-primary ml-2" onclick="copyToClipboard('78092116471')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td>w2zmFFTv1G<button class="btn btn-primary ml-2" onclick="copyToClipboard('w2zmFFTv1G')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                function copyToClipboard(texto) {
+                    navigator.clipboard.writeText(texto)
+                        .then(() => {
+                            console.log("Texto copiado al portapapeles:", texto);
+                        })
+                        .catch((error) => {
+                            console.error("Error al copiar al portapapeles:", error);
+                        });
+                }
+            </script>
+        </div>
+    </section>
+    <hr>
+    <section id="pasaporte">
+        <div class="h3 text-center">Pasaporte</div>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Contraseña</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Henry</td>
+                        <td><button class="btn btn-primary ml-2" onclick="copyToClipboard('87010618585')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td><button class="btn btn-primary ml-2" onclick="copyToClipboard('')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Emilio</td>
+                        <td><button class="btn btn-primary ml-2" onclick="copyToClipboard('')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td><button class="btn btn-primary ml-2" onclick="copyToClipboard('')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Ada</td>
+                        <td><button class="btn btn-primary ml-2" onclick="copyToClipboard('')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td><button class="btn btn-primary ml-2" onclick="copyToClipboard('')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                function copyToClipboard(texto) {
+                    navigator.clipboard.writeText(texto)
+                        .then(() => {
+                            console.log("Texto copiado al portapapeles:", texto);
+                        })
+                        .catch((error) => {
+                            console.error("Error al copiar al portapapeles:", error);
+                        });
+                }
+            </script>
+        </div>
+    </section>
+    <hr>
+    <section id="certificaciones" class="pt-5">
+        <div class="h3 text-center">Certificaciones</div>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Contraseña</th>
+                        <th scope="col">Tomo</th>
+                        <th scope="col">Página</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">Fecha de Inscrito</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Yosle DNI</td>
+                        <td>96110413773<button class="btn btn-primary ml-2" onclick="copyToClipboard('96110413773')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td>123456<button class="btn btn-primary ml-2" onclick="copyToClipboard('')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td>943<button class="btn btn-primary ml-2" onclick="copyToClipboard('943')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td>213<button class="btn btn-primary ml-2" onclick="copyToClipboard('213')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td>107<button class="btn btn-primary ml-2" onclick="copyToClipboard('107')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td>08-06-2022<button class="btn btn-primary ml-2" onclick="copyToClipboard('08-06-2022')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+
                     </tr>
                 </tbody>
             </table>
