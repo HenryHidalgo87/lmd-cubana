@@ -1036,7 +1036,7 @@ function mostrarResultado(respuestas) {
 
     if (aceptaCondiciones) {
         const metodoPago = prompt(
-            'Haga una transferencia de 100 MN a esta cuenta: 9200-1299-7101-5751 e introduzca el Nro. Transaccion aqui para comprobarlo:'
+            'Haga una transferencia de 200 MN a esta cuenta: 9200-1299-7101-5751 e introduzca el Nro. Transaccion aqui para comprobarlo:'
         );
         console.log(metodoPago); // Agregar esta línea para mostrar el valor introducido en la consola
         const valorIntroducido = metodoPago; // Guardar el valor introducido en una variable
