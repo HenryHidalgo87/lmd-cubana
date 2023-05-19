@@ -107,24 +107,21 @@
       <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card h-200">
-            <img src="./img/LMD.jpg" class="card-img-top rounded-circle my-3 img-fluid d-block mx-auto" alt="Anexo 1"
+            <img src="/img/1.jpg" class="card-img-top rounded-circle my-3 img-fluid d-block mx-auto" alt="Anexo 1"
               style="width: 200px;">
             <div class="card-body">
-              <h5 class="card-title">Citas LMD</h5>
+              <h5 class="card-title">Anexo I</h5>
               <p class="card-text">Va a presentarse por un expediente de Anexo I. Contacta con nosotros:</p>
               <div class="mt-auto d-flex justify-content-center">
-                <a href="https://wa.me/17868022561?text=Hola,%20quiero%20encargar%20un%20expediente%20Anexo%20I"
-                  class="btn btn-primary btn-lg mx-2" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                <a href="https://t.me/mundosellers?text=Hola,%20quiero%encargar%20un%20expediente%20Anexo%20I"
-                  class="btn btn-primary btn-lg mx-2" target="_blank"><i class="bi bi-telegram"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-lg mx-2" onclick="enviarCorreoI()"><i
-                    class="bi bi-envelope"></i></a>
+                <button class="btn btn-primary btn-lg mx-2 keychainify-checked" onclick="enviarEncargo('Anexo_I')"><i
+                    class="bi bi-cart-plus"></i> Encargo</button>
               </div>
             </div>
           </div>
           <script>
-            function enviarCorreoI() {
-              window.location.href = "mailto:soporte.ldm.cubana@gmail.com?subject=Encargo%20de%20Anexo%20I";
+            function enviarEncargo() {
+              var nuevaURL = "/encargo_expediente.html?opcion=" + opcionSeleccionada;
+              window.location.href = nuevaURL;
             }
           </script>
         </div>
@@ -136,18 +133,21 @@
               <h5 class="card-title">Anexo II</h5>
               <p class="card-text">Va a presentarse por un expediente de Anexo II. Contacta con nosotros:</p>
               <div class="mt-auto d-flex justify-content-center">
-                <a href="https://wa.me/17868022561?text=Hola,%20quiero%20encargar%20un%20expediente%20Anexo%20II"
-                  class="btn btn-primary btn-lg mx-2" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                <a href="https://t.me/mundosellers?text=Hola,%20quiero%encargar%20un%20expediente%20Anexo%20II"
-                  class="btn btn-primary btn-lg mx-2" target="_blank"><i class="bi bi-telegram"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-lg mx-2" onclick="enviarCorreoI()"><i
-                    class="bi bi-envelope"></i></a>
+                <button class="btn btn-primary btn-lg mx-2 keychainify-checked" onclick="enviarEncargo('Anexo_II')"><i
+                    class="bi bi-cart-plus"></i> Encargo</button>
               </div>
             </div>
           </div>
           <script>
-            function enviarCorreoI() {
-              window.location.href = "mailto:soporte.ldm.cubana@gmail.com?subject=Encargo%20de%20Anexo%20II";
+            function enviarEncargo() {
+              // Obtener el valor seleccionado del select (Anexo II en este caso)
+              var opcionSeleccionada = "Anexo_II";
+
+              // Agregar el parámetro "opcion" a la URL con el valor seleccionado
+              var nuevaURL = "/encargo_expediente.html?opcion=" + opcionSeleccionada;
+
+              // Redirigir a la nueva URL
+              window.location.href = nuevaURL;
             }
           </script>
         </div>
@@ -159,22 +159,51 @@
               <h5 class="card-title">Anexo III</h5>
               <p class="card-text">Va a presentarse por un expediente de Anexo III. Contacta con nosotros:</p>
               <div class="mt-auto d-flex justify-content-center">
-                <a href="https://wa.me/17868022561?text=Hola,%20quiero%20encargar%20un%20expediente%20Anexo%20III"
-                  class="btn btn-primary btn-lg mx-2" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                <a href="https://t.me/mundosellers?text=Hola,%20quiero%encargar%20un%20expediente%20Anexo%20III"
-                  class="btn btn-primary btn-lg mx-2" target="_blank"><i class="bi bi-telegram"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-lg mx-2" onclick="enviarCorreoI()"><i
-                    class="bi bi-envelope"></i></a>
+                <button class="btn btn-primary btn-lg mx-2 keychainify-checked" onclick="enviarEncargo('Anexo_III')"><i
+                    class="bi bi-cart-plus"></i> Encargo</button>
               </div>
             </div>
           </div>
           <script>
-            function enviarCorreoIII() {
-              window.location.href = "mailto:soporte.ldm.cubana@gmail.com?subject=Encargo%20de%20Anexo%20III";
+            function enviarEncargo() {
+              // Obtener el valor seleccionado del select (Anexo II en este caso)
+              var opcionSeleccionada = "Anexo_III";
+
+              // Agregar el parámetro "opcion" a la URL con el valor seleccionado
+              var nuevaURL = "/encargo_expediente.html?opcion=" + opcionSeleccionada;
+
+              // Redirigir a la nueva URL
+              window.location.href = nuevaURL;
             }
           </script>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100">
+            <img src="../img/4.jpg" class="card-img-top rounded-circle my-3 img-fluid d-block mx-auto" alt="Anexo 4"
+              style="width: 200px;">
+            <div class="card-body">
+              <h5 class="card-title">Anexo IV</h5>
+              <p class="card-text">Va a presentarse por un expediente de Anexo IV. Contacta con nosotros:</p>
+              <div class="mt-auto d-flex justify-content-center">
+                <button class="btn btn-primary btn-lg mx-2 keychainify-checked" onclick="enviarEncargo('Anexo_IV')"><i
+                    class="bi bi-cart-plus"></i> Encargo</button>
+              </div>
+            </div>
+          </div>
+          <script>
+            function enviarEncargo() {
+              // Obtener el valor seleccionado del select (Anexo II en este caso)
+              var opcionSeleccionada = "Anexo_IV";
+
+              // Agregar el parámetro "opcion" a la URL con el valor seleccionado
+              var nuevaURL = "/encargo_expediente.html?opcion=" + opcionSeleccionada;
+
+              // Redirigir a la nueva URL
+              window.location.href = nuevaURL;
+            }
+          </script>
+        </div>
+        <!-- <div class="col-12 col-md-6 col-lg-3">
           <div class="card h-100">
             <img src="../img/4.jpg" class="card-img-top rounded-circle my-3 img-fluid d-block mx-auto" alt="Anexo 4"
               style="width: 200px;">
@@ -196,7 +225,7 @@
               window.location.href = "mailto:soporte.ldm.cubana@gmail.com?subject=Encargo%20de%20Anexo%20IV";
             }
           </script>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
