@@ -127,7 +127,9 @@
                             </li>
                             <li><a href="/#contact" class="dropdown-item">Servicios de obtención de literales
                                     españolas</a></li>
-                            <li><a href="/cita_legalizaciones.html" class="dropdown-item">Encargo de cita de legalización</a>
+                            <li><a href="/cita_legalizaciones.html" class="dropdown-item">Encargo de cita de
+                                    legalización</a>
+                            </li>
                             <li><a href="/encuesta_clientes.html" class="dropdown-item" data-toggle="modal"
                                     data-target="#verificarCodigoModal" type="button">Código de Verificación</a></li>
                         </ul>
@@ -271,14 +273,20 @@
                 <div class="row p-3">
                     <div class="col-md-6">
                         <fieldset>
-                            <legend class="h4">Seleccione su precio</legend>
+                            <legend>Seleccione su precio</legend>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="precio" id="flexRadioPrecio1"
                                     value="3000" required>
-                                <div class="invalid-tooltip">
-                                    Marca una opción.
-                                </div>
-                                <label class="form-check-label" for="flexRadioPrecio1" check-label>Coste 3000 MN</label>
+                                <label class="form-check-label" for="flexRadioPrecio1" check-label>
+                                    CONABI 3000 MN
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="precio" id="flexRadioPrecio2"
+                                    value="5000" required>
+                                <label class="form-check-label" for="flexRadioPrecio2" check-label>
+                                    CLAIM 5000 MN
+                                </label>
                             </div>
                         </fieldset>
                     </div>
@@ -327,10 +335,11 @@
                     const direccion = document.getElementById("direccion").value;
                     const lineaTelefonica = document.getElementById("lineaTelefonica").value;
                     const flexRadioPrecio1 = document.getElementById("flexRadioPrecio1");
-                    const valorSeleccionado = flexRadioPrecio1.value;
+                    const flexRadioPrecio2 = document.getElementById("flexRadioPrecio2");
+                    const flexRadioPrecio = flexRadioPrecio1.checked ? flexRadioPrecio1.value : flexRadioPrecio2.checked ? flexRadioPrecio2.value : '';
 
                     // Verificar si los campos requeridos tienen un valor
-                    if (!nombre || !apellidos || !ci || !telefono || !correo || !direccion || !flexRadioPrecio1.checked) {
+                    if (!nombre || !apellidos || !ci || !telefono || !correo || !direccion || !flexRadioPrecio) {
                         alert("Por favor, complete todos los campos requeridos y seleccione una opción de preciocorregido.");
                         return;
                     }
@@ -350,7 +359,7 @@
 
         <b>Datos del pago</b>
         <pre>
-            Pago: ${valorSeleccionado}
+            Pago: ${flexRadioPrecio}
         </pre>
     `;
 
@@ -395,7 +404,7 @@
                         document.getElementById("lineaTelefonica").value = "";
                         document.getElementById("flexRadioPrecio1").checked = false;
                         document.getElementById("flexRadioPrecio2").checked = false;
-                        document.getElementById("selectAnexo").value = "";
+                        const flexRadioPrecio = '';
                         // document.getElementById("inputGroupFile01").value = "";
                         // document.getElementById("fileList").innerHTML = "";
 
