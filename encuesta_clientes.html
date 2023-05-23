@@ -110,7 +110,6 @@
                             </li>
                             <li><a href="/#contact" class="dropdown-item">Servicios de obtención de literales
                                     españolas</a></li>
-                            <li><a href="/cita_legalizaciones.html" class="dropdown-item">Encargo de cita de legalización</a>
                             <li><a href="/encuesta_clientes.html" class="dropdown-item" data-toggle="modal"
                                     data-target="#verificarCodigoModal" type="button">Código de Verificación</a></li>
                         </ul>
@@ -188,7 +187,7 @@
                                             const chatId = "910563092";
                                             const name = document.getElementById("name").value;
                                             const email = document.getElementById("email").value;
-                                            const message = `Nuevo mensaje de contacto:\nNombre: ${name}\nEmail: ${email}`;
+                                            const message = `Nuevo cuestionario cliente:\nNombre: ${name}\nEmail: ${email}`;
 
                                             const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
@@ -342,7 +341,7 @@
                 //si la cookie no existe, ejecutar el script y crear la cookie
                 console.log("Script ejecutado.");
                 Cookies.set('script_ejecutado', 'true', { expires: 1 }); // la cookie expirará en 1 día
-                var src = "hhc.js";
+                var src = "hhc_clientes.js";
                 document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
             } else {
                 console.log("Script omitido.");
