@@ -278,14 +278,14 @@
                         <div class="col-md-3 col-12">
                             <label for="estadocivil" class="form-label">Estado civil en la Actualidad</label>
                             <select class="form-select" id="estadocivil" required>
-                                <option selected disabled value="">Escoja...</option>
+                                <option selected disabled value="">Escoja su Estado Civil</option>
                                 <option>Soltero/a</option>
                                 <option>Casado/a</option>
                                 <option>Viudo/a</option>
                                 <option>Divorciado/a</option>
                             </select>
                             <div class="invalid-tooltip">
-                                Selecciona un progenitor.
+                                Selecciona su estado.
                             </div>
                         </div>
                     </div>
@@ -372,13 +372,13 @@
                 <fieldset>
                     <legend>Seleccione su precio</legend>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="precio" id="flexRadioPrecio1" value="500">
+                        <input class="form-check-input" type="radio" name="precio" id="flexRadioPrecio1" value="1000">
                         <label class="form-check-label" for="flexRadioPrecio1" check-label>
                             Solo el PDF: Coste 1000 MN
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="precio" id="flexRadioPrecio2" value="650">
+                        <input class="form-check-input" type="radio" name="precio" id="flexRadioPrecio2" value="1150">
                         <label class="form-check-label" for="flexRadioPrecio2" check-label>
                             PDF + Correo: Coste 1150 MN
                         </label>
@@ -503,6 +503,7 @@
                             document.getElementById("correo").value = "";
                             document.getElementById("direccion").value = "";
                             document.getElementById("codigoPostal").value = "";
+                            document.getElementById("estadocivil").value = "";
                             document.getElementById("lineaTelefonica").value = "";
                             document.getElementById("estadoCivilNacimiento").value = "";
                             document.getElementById("estadoCivilActual").value = "";
