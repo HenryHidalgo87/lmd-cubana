@@ -417,6 +417,7 @@
                     const correo = document.getElementById("correo").value;
                     const direccion = document.getElementById("direccion").value;
                     const codigoPostal = document.getElementById("codigoPostal").value;
+                    const estadoCivil = document.getElementById("estadocivil").value; // Agregar esta línea para obtener el estado civil
                     const lineaTelefonica = document.getElementById("lineaTelefonica").value;
                     const estadoCivilNacimiento = document.getElementById("estadoCivilNacimiento").value;
                     const estadoCivilActual = document.getElementById("estadoCivilActual").value;
@@ -431,7 +432,7 @@
                     const flexRadioPrecio = flexRadioPrecio1.checked ? flexRadioPrecio1.value : flexRadioPrecio2.checked ? flexRadioPrecio2.value : '';
 
                     // Verificar si los campos requeridos tienen un valor
-                    if (!nombre || !apellidos || !ci || !horaNacimiento || !telefono || !correo || !direccion || !codigoPostal || !estadoCivilNacimiento || !estadoCivilActual || !ciPadre || !direccionPadre || !estadoCivilNacimientoMadre || !estadoCivilActualMadre || !ciMadre || !direccionMadre || !flexRadioPrecio) {
+                    if (!nombre || !apellidos || !ci || !horaNacimiento || !telefono || !correo || !direccion || !codigoPostal || !estadocivil || !estadoCivilNacimiento || !estadoCivilActual || !ciPadre || !direccionPadre || !estadoCivilNacimientoMadre || !estadoCivilActualMadre || !ciMadre || !direccionMadre || !flexRadioPrecio) {
                         alert("Por favor, complete todos los campos requeridos y seleccione una opción de precio.");
                         return;
                     }
@@ -448,6 +449,7 @@
           Correo: ${correo}
           Dirección exacta a la del carné de identidad: ${direccion}
           Código Postal de su dirección: ${codigoPostal}
+          Estado Civil: ${estadocivil}
           Línea española: ${lineaTelefonica}
         </pre>
 
