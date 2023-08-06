@@ -382,6 +382,9 @@
                         <label class="form-check-label" for="flexRadioPrecio2" check-label>
                             PDF + Correo: Coste 1150 MN
                         </label>
+                        <p class="h3">
+                          El próximo 
+                      </p>
                     </div>
                 </fieldset>
 
@@ -417,7 +420,8 @@
                     const correo = document.getElementById("correo").value;
                     const direccion = document.getElementById("direccion").value;
                     const codigoPostal = document.getElementById("codigoPostal").value;
-                    const estadoCivil = document.getElementById("estadocivil").value; // Agregar esta línea para obtener el estado civil
+                    const estadoCivilSelect = document.getElementById("estadocivil"); // Obtener el elemento <select>
+                    const estadoCivil = estadoCivilSelect.options[estadoCivilSelect.selectedIndex].value; // Obtener el valor seleccionado del <select>
                     const lineaTelefonica = document.getElementById("lineaTelefonica").value;
                     const estadoCivilNacimiento = document.getElementById("estadoCivilNacimiento").value;
                     const estadoCivilActual = document.getElementById("estadoCivilActual").value;
@@ -449,7 +453,7 @@
           Correo: ${correo}
           Dirección exacta a la del carné de identidad: ${direccion}
           Código Postal de su dirección: ${codigoPostal}
-          Estado Civil: ${estadocivil}
+          Estado Civil: ${estadoCivil}
           Línea española: ${lineaTelefonica}
         </pre>
 
