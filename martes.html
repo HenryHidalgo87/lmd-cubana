@@ -250,7 +250,7 @@
             </script>
         </div>
     </section>
-    <hr>
+    <hr> <!-- LISTA DE USUARIOS---FAMILIA------------------------------------------------------------------------->
     <section id="citaslmd_familia" class="py-5">
         <div class="h3 text-center">Citas LMD Familia</div>
         <div class="container">
@@ -297,7 +297,7 @@
             </script>
         </div>
     </section>
-    <hr>
+    <hr> <!-- LISTA DE USUARIOS---PASAPORTE------------------------------------------------------------------------>
 
     <section id="pasaporte">
         <div class="h3 text-center">Pasaporte</div>
@@ -339,6 +339,46 @@
                                     class="bi bi-clipboard"></i> Copiar</button>
                         </td>
                         <td>ICD29121963<button class="btn btn-primary ml-2" onclick="copyToClipboard('ICD29121963')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                function copyToClipboard(texto) {
+                    navigator.clipboard.writeText(texto)
+                        .then(() => {
+                            console.log("Texto copiado al portapapeles:", texto);
+                        })
+                        .catch((error) => {
+                            console.error("Error al copiar al portapapeles:", error);
+                        });
+                }
+            </script>
+        </div>
+    </section>
+    <hr> <!-- LISTA DE USUARIOS---MATRIMONIO----------------------------------------------------------------------->
+
+    <section id="matrimonio">
+        <div class="h3 text-center">Matrimonio</div>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Contraseña</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Rica-Nori</td>
+                        <td>XDD899098<button class="btn btn-primary ml-2" onclick="copyToClipboard('XDD899098')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td>uK51R276nb<button class="btn btn-primary ml-2" onclick="copyToClipboard('uK51R276nb')"><i
                                     class="bi bi-clipboard"></i> Copiar</button></td>
                         <td></td>
                     </tr>
