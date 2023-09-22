@@ -325,3 +325,7 @@ div img {
 ol#requisitos > li {
   text-align: left !important;
 }
+
+.table-responsive {
+      overflow-x: auto;
+    }
