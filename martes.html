@@ -389,7 +389,49 @@
             </script>
         </div>
     </section>
-    <hr> <!-- LISTA DE USUARIOS---FAMILIA------------------------------------------------------------------------->
+    <hr>
+  <hr> <!-- LEGALIZACIONES----------------------------------------------------------------------->
+
+    <section id="legalizaciones">
+        <div class="h3 text-center">Legalizaciones</div>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Contraseña</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>CLAIM</td>
+                        <td>clau020606@gmail.com<button class="btn btn-primary ml-2" onclick="copyToClipboard('clau020606@gmail.com')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button>
+                        </td>
+                        <td>C020606a<button class="btn btn-primary ml-2" onclick="copyToClipboard('C020606a')"><i
+                                    class="bi bi-clipboard"></i> Copiar</button></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <script>
+                function copyToClipboard(texto) {
+                    navigator.clipboard.writeText(texto)
+                        .then(() => {
+                            console.log("Texto copiado al portapapeles:", texto);
+                        })
+                        .catch((error) => {
+                            console.error("Error al copiar al portapapeles:", error);
+                        });
+                }
+            </script>
+        </div>
+    </section>
+    <hr> <!-- FIN DE LA LISTA----------------------------------------------------------------------->
+  <!-- LISTA DE USUARIOS---FAMILIA------------------------------------------------------------------------->
     <section id="citaslmd_familia" class="py-5">
         <div class="h3 text-center">Citas LMD Familia</div>
         <div class="container">
